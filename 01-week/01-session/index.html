@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alistamiento del Entorno | Minería de Datos | Ingeniería de Sistemas</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="container brand-container">
+                <span class="brand-name">CURSO DE MINERÍA DE DATOS</span><br>
+                <span class="brand-name">Alistamiento del Entorno: Docker, APIs y Data Warehouse</span>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#introduccion" class="active">Inicio</a></li>
+                    <li><a href="#docker-intro">Docker</a></li>
+                    <li><a href="#apis">APIs REST</a></li>
+                    <li><a href="#python-datos">Python</a></li>
+                    <li><a href="#postgresql">PostgreSQL</a></li>
+                    <li><a href="#datawarehouse">Data Warehouse</a></li>
+                    <li><a href="#pipeline">Pipeline Completo</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container main-content">
+
+        <section id="introduccion" class="hero-section">
+            <h1>Alistamiento del Entorno para Minería de Datos</h1>
+            <p class="lead">Aprende a configurar un entorno profesional con Docker, ingesta de datos por API, transformación con Python y almacenamiento en PostgreSQL. Este es el primer paso para realizar análisis de datos a nivel empresarial.</p>
+        </section>
+
+        <hr class="divider">
+
+        <section id="docker-intro">
+            <h2>1. Introducción a Docker y Contenedores</h2>
+            <p><strong>¿Por qué Docker?</strong> En minería de datos necesitamos ambientes reproducibles donde nuestro código funcione igual en la máquina del desarrollador, en pruebas y en producción.</p>
+            
+            <blockquote class="definition-box">
+                <strong>Docker es:</strong> Una plataforma de containerización que empaqueta tu aplicación, dependencias y configuración en una unidad aislada llamada "contenedor". Así garantizas que funcione en cualquier lugar.
+            </blockquote>
+
+            <h3>Conceptos Clave</h3>
+            <ul>
+                <li><strong>Imagen Docker:</strong> Plantilla inmutable que contiene el código, librerías y configuración.</li>
+                <li><strong>Contenedor:</strong> Instancia en ejecución de una imagen. Es como una máquina virtual ligera.</li>
+                <li><strong>Dockerfile:</strong> Archivo de texto que define cómo construir una imagen.</li>
+                <li><strong>Docker Compose:</strong> Herramienta para orquestar múltiples contenedores (Python + PostgreSQL + API).</li>
+            </ul>
+
+            <div class="reflection-box">
+                <h4>Analogía Práctica</h4>
+                <p>Imagina que tu proyecto de minería de datos es una receta. Docker es como envasar esa receta con todos los ingredientes y utensilios en una caja. Cualquiera que abra la caja podrá ejecutar exactamente lo mismo.</p>
+            </div>
+
+            <h3>Ventajas para Minería de Datos</h3>
+            <div class="comparison-cards">
+                <div class="card">
+                    <h4>✅ Reproducibilidad</h4>
+                    <p>El código ejecutado hoy funciona igual en 6 meses.</p>
+                </div>
+                <div class="card">
+                    <h4>✅ Escalabilidad</h4>
+                    <p>Pasar de desarrollo a producción sin cambios.</p>
+                </div>
+                <div class="card">
+                    <h4>✅ Colaboración</h4>
+                    <p>Los equipos trabajan en idénticas condiciones.</p>
+                </div>
+                <div class="card">
+                    <h4>✅ Aislamiento</h4>
+                    <p>Tu código no interfiere con otras aplicaciones.</p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="docker-install">
+            <h2>2. Instalación y Configuración de Docker</h2>
+
+            <h3>Paso 1: Instalación según tu SO</h3>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Sistema Operativo</th>
+                            <th>Pasos</th>
+                            <th>Recurso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Windows</strong></td>
+                            <td>Descargar Docker Desktop desde docker.com, instalar, reiniciar.</td>
+                            <td><a href="https://www.youtube.com/results?search_query=docker+install+windows" target="_blank">📹 Tutorial</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>macOS</strong></td>
+                            <td>Descargar Docker Desktop (Intel o Apple Silicon), instalar.</td>
+                            <td><a href="https://www.youtube.com/results?search_query=docker+install+mac" target="_blank">📹 Tutorial</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Linux (Ubuntu)</strong></td>
+                            <td>$ sudo apt-get update && sudo apt-get install docker.io</td>
+                            <td><a href="https://www.youtube.com/results?search_query=docker+install+ubuntu" target="_blank">📹 Tutorial</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Paso 2: Verificar Instalación</h3>
+            <pre><code>docker --version
+docker run hello-world</code></pre>
+
+            <h3>Paso 3: Docker Compose para Minería de Datos</h3>
+            <p>Crea un archivo <code>docker-compose.yml</code> que defina tu stack completo:</p>
+
+            <pre><code>version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: dataminer
+      POSTGRES_PASSWORD: secure_pass
+      POSTGRES_DB: datawarehouse
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  python-app:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://dataminer:secure_pass@postgres:5432/datawarehouse
+    volumes:
+      - ./src:/app/src
+
+volumes:
+  postgres_data:</code></pre>
+
+            <div class="reflection-box">
+                <h4>💡 Consejo</h4>
+                <p>Docker Compose es tu mejor aliado. Con un solo comando (<code>docker-compose up</code>) levantas toda la infraestructura: BD, APIs, workers, todo.</p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="apis">
+            <h2>3. Fundamentos de APIs REST</h2>
+            <p>La ingesta de datos típicamente viene de APIs REST. Necesitas entender qué son y cómo consumirlas.</p>
+
+            <h3>¿Qué es una API REST?</h3>
+            <blockquote class="definition-box">
+                <strong>API (Application Programming Interface):</strong> Un conjunto de reglas que permite que dos aplicaciones se comuniquen. REST usa HTTP y devuelve típicamente JSON.
+            </blockquote>
+
+            <h3>Conceptos Fundamentales</h3>
+            <div class="strategy-grid">
+                <div class="strategy-box">
+                    <h4>Métodos HTTP</h4>
+                    <ul>
+                        <li><code>GET</code> → Obtener datos</li>
+                        <li><code>POST</code> → Enviar datos</li>
+                        <li><code>PUT</code> → Actualizar recurso</li>
+                        <li><code>DELETE</code> → Eliminar recurso</li>
+                    </ul>
+                </div>
+                <div class="strategy-box">
+                    <h4>Status Codes</h4>
+                    <ul>
+                        <li><code>200</code> → OK</li>
+                        <li><code>404</code> → No encontrado</li>
+                        <li><code>401</code> → No autorizado</li>
+                        <li><code>500</code> → Error del servidor</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Consumir una API con Python</h3>
+            <pre><code>import requests
+import json
+
+# Hacer una petición GET
+response = requests.get('https://api.ejemplo.com/datos')
+
+# Verificar que fue exitosa
+if response.status_code == 200:
+    datos = response.json()
+    print(json.dumps(datos, indent=2))
+else:
+    print(f"Error: {response.status_code}")</code></pre>
+
+            <h3>Apis Públicas Recomendadas para Práctica</h3>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>API</th>
+                            <th>Descripción</th>
+                            <th>Datos Disponibles</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>OpenWeather</strong></td>
+                            <td>Datos meteorológicos en tiempo real</td>
+                            <td>Temperatura, humedad, presión</td>
+                        </tr>
+                        <tr>
+                            <td><strong>JSONPlaceholder</strong></td>
+                            <td>API fake para testing</td>
+                            <td>Posts, usuarios, comentarios</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GitHub REST API</strong></td>
+                            <td>Datos de repositorios y usuarios</td>
+                            <td>Repos, commits, issues</td>
+                        </tr>
+                        <tr>
+                            <td><strong>CoinGecko</strong></td>
+                            <td>Datos de criptomonedas</td>
+                            <td>Precios, capitalizaciones</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="reflection-box">
+                <h4>📚 Recurso Recomendado</h4>
+                <p><a href="https://www.youtube.com/results?search_query=REST+API+Python+requests" target="_blank">Tutorial: REST APIs con Python</a></p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="python-datos">
+            <h2>4. Python para Ingesta de Datos</h2>
+            <p>Python es el estándar en minería de datos. Necesitas dominar la ingesta, transformación y carga de datos.</p>
+
+            <h3>Librerías Esenciales</h3>
+            <div class="comparison-cards">
+                <div class="card">
+                    <h3>requests</h3>
+                    <p>Para consumir APIs HTTP de forma simple y elegante.</p>
+                </div>
+                <div class="card">
+                    <h3>pandas</h3>
+                    <p>Manipulación y análisis de datos tabulares.</p>
+                </div>
+                <div class="card">
+                    <h3>sqlalchemy</h3>
+                    <p>ORM para interactuar con bases de datos.</p>
+                </div>
+                <div class="card">
+                    <h3>psycopg2</h3>
+                    <p>Driver específico para PostgreSQL.</p>
+                </div>
+            </div>
+
+            <h3>Script Básico de Ingesta</h3>
+            <pre><code>import requests
+import pandas as pd
+from datetime import datetime
+
+# 1. Obtener datos de la API
+api_url = "https://jsonplaceholder.typicode.com/posts"
+response = requests.get(api_url)
+datos_raw = response.json()
+
+# 2. Convertir a DataFrame
+df = pd.DataFrame(datos_raw)
+
+# 3. Limpieza y validación
+df['fecha_ingesta'] = datetime.now()
+df = df.dropna(subset=['title'])  # Eliminar nulos en títulos
+
+# 4. Guardar localmente (antes de enviar a BD)
+df.to_csv('datos_ingesta.csv', index=False)
+print(f"✅ {len(df)} registros ingestados correctamente")</code></pre>
+
+            <h3>Manejo de Errores en Ingesta</h3>
+            <pre><code>import requests
+import time
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+def crear_sesion_robusta():
+    sesion = requests.Session()
+    reintentos = Retry(
+        total=3,
+        backoff_factor=0.5,
+        status_forcelist=[429, 500, 502, 503, 504]
+    )
+    adaptador = HTTPAdapter(max_retries=reintentos)
+    sesion.mount('http://', adaptador)
+    sesion.mount('https://', adaptador)
+    return sesion
+
+sesion = crear_sesion_robusta()
+try:
+    response = sesion.get('https://api.ejemplo.com/datos', timeout=10)
+    response.raise_for_status()
+except requests.exceptions.RequestException as e:
+    print(f"❌ Error en ingesta: {e}")</code></pre>
+
+            <div class="reflection-box">
+                <h4>🎯 Best Practice</h4>
+                <p>Siempre implementa reintentos y manejo de excepciones. Las APIs pueden fallar. Tu código debe ser resiliente.</p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="transformacion">
+            <h2>5. Transformación de Datos con Python</h2>
+            <p>Después de ingestar datos crudos, necesitas transformarlos, limpiarlos y normalizarlos.</p>
+
+            <h3>Pipeline de Transformación Típico</h3>
+            <pre><code>import pandas as pd
+import numpy as np
+
+# Cargar datos crudos
+df = pd.read_csv('datos_ingesta.csv')
+
+# 1. Validación de tipos
+df['fecha'] = pd.to_datetime(df['fecha'])
+df['valor'] = pd.to_numeric(df['valor'], errors='coerce')
+
+# 2. Limpieza: eliminar duplicados y nulos
+df = df.drop_duplicates()
+df = df.dropna(subset=['valor', 'fecha'])
+
+# 3. Normalización: estandarizar valores
+df['valor_normalizado'] = (df['valor'] - df['valor'].mean()) / df['valor'].std()
+
+# 4. Enriquecimiento: crear columnas derivadas
+df['año'] = df['fecha'].dt.year
+df['mes'] = df['fecha'].dt.month
+df['trimestre'] = df['fecha'].dt.quarter
+
+# 5. Validación de calidad
+print(f"Registros procesados: {len(df)}")
+print(f"Valores nulos restantes: {df.isnull().sum().sum()}")
+print(df.head())</code></pre>
+
+            <h3>Validación de Datos (Data Quality)</h3>
+            <pre><code>class ValidadorDatos:
+    @staticmethod
+    def validar_rango(df, columna, minimo, maximo):
+        """Verificar que valores estén en rango esperado"""
+        fuera_rango = df[(df[columna] < minimo) | (df[columna] > maximo)]
+        return len(fuera_rango) == 0
+
+    @staticmethod
+    def validar_duplicados(df):
+        """Detectar registros duplicados"""
+        return df.duplicated().sum()
+
+    @staticmethod
+    def generar_reporte(df):
+        """Reporte completo de calidad"""
+        return {
+            'total_registros': len(df),
+            'valores_nulos': df.isnull().sum().to_dict(),
+            'duplicados': df.duplicated().sum(),
+            'tipos_datos': df.dtypes.to_dict()
+        }
+
+# Uso
+validador = ValidadorDatos()
+reporte = validador.generar_reporte(df)
+print(reporte)</code></pre>
+
+            <div class="reflection-box">
+                <h4>⚠️ Advertencia Crítica</h4>
+                <p>"Garbage In, Garbage Out" - Si los datos que cargas son malos, los análisis serán malos. Dedica tiempo a validación.</p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="postgresql">
+            <h2>6. PostgreSQL: Conceptos y Configuración</h2>
+            <p>PostgreSQL es la base de datos relacional más robusta para data warehouses. Aprende su arquitectura y cómo configurarla en Docker.</p>
+
+            <h3>¿Por qué PostgreSQL para Data Warehouse?</h3>
+            <ul>
+                <li>✅ <strong>ACID compliant:</strong> Garantiza integridad de datos</li>
+                <li>✅ <strong>Escalable:</strong> Maneja millones de registros</li>
+                <li>✅ <strong>Estándares SQL:</strong> Código portable</li>
+                <li>✅ <strong>Open source:</strong> Gratis y comunitario</li>
+                <li>✅ <strong>JSON nativo:</strong> Perfecto para datos semi-estructurados</li>
+            </ul>
+
+            <h3>Dockerfile para PostgreSQL Personalizado</h3>
+            <pre><code>FROM postgres:15-alpine
+
+# Variables de entorno
+ENV POSTGRES_USER=dataminer
+ENV POSTGRES_PASSWORD=secure_password
+ENV POSTGRES_DB=datawarehouse
+
+# Copiar script de inicialización
+COPY ./init-db.sql /docker-entrypoint-initdb.d/
+
+# Instalar extensiones útiles
+RUN apt-get update && apt-get install -y \
+    postgresql-contrib \
+    && rm -rf /var/lib/apt/lists/*
+
+EXPOSE 5432</code></pre>
+
+            <h3>Conexión desde Python</h3>
+            <pre><code>import psycopg2
+from psycopg2.extras import execute_values
+
+# Conexión
+conn = psycopg2.connect(
+    host='localhost',
+    database='datawarehouse',
+    user='dataminer',
+    password='secure_password',
+    port=5432
+)
+
+cursor = conn.cursor()
+
+# Crear tabla
+crear_tabla = """
+CREATE TABLE IF NOT EXISTS registros (
+    id SERIAL PRIMARY KEY,
+    timestamp TIMESTAMP DEFAULT NOW(),
+    valor NUMERIC,
+    categoría VARCHAR(50),
+    datos_json JSONB
+);
+"""
+cursor.execute(crear_tabla)
+
+# Insertar datos
+datos = [
+    (100.5, 'A', '{"origen": "API_1"}'),
+    (200.3, 'B', '{"origen": "API_2"}')
+]
+
+insertar = "INSERT INTO registros (valor, categoría, datos_json) VALUES %s"
+execute_values(cursor, insertar, datos)
+
+conn.commit()
+cursor.close()
+conn.close()
+print("✅ Datos insertados en PostgreSQL")</code></pre>
+
+            <h3>Consultas Útiles para Data Warehouse</h3>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Caso de Uso</th>
+                            <th>Consulta SQL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Contar registros por categoría</td>
+                            <td><code>SELECT categoría, COUNT(*) FROM registros GROUP BY categoría;</code></td>
+                        </tr>
+                        <tr>
+                            <td>Obtener últimos registros</td>
+                            <td><code>SELECT * FROM registros ORDER BY timestamp DESC LIMIT 10;</code></td>
+                        </tr>
+                        <tr>
+                            <td>Valor promedio por período</td>
+                            <td><code>SELECT DATE(timestamp), AVG(valor) FROM registros GROUP BY DATE(timestamp);</code></td>
+                        </tr>
+                        <tr>
+                            <td>Detectar anomalías (valores fuera de rango)</td>
+                            <td><code>SELECT * FROM registros WHERE valor > (SELECT AVG(valor) + 3*STDDEV(valor) FROM registros);</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="reflection-box">
+                <h4>📚 Recurso Recomendado</h4>
+                <p><a href="https://www.youtube.com/results?search_query=PostgreSQL+tutorial+español" target="_blank">Tutorial: PostgreSQL desde Cero</a></p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="datawarehouse">
+            <h2>7. Data Warehouse: Diseño y Arquitectura</h2>
+            <p>Un data warehouse es la "central de datos" donde se consolidan datos de múltiples fuentes para análisis.</p>
+
+            <h3>Conceptos Clave</h3>
+            <blockquote class="definition-box">
+                <strong>Data Warehouse:</strong> Base de datos centralizada optimizada para consultas analíticas, no para operaciones transaccionales. Contiene datos históricos, limpios y estructurados.
+            </blockquote>
+
+            <h3>Arquitectura Típica</h3>
+            <pre><code>
+┌─────────────────────────────────────────────┐
+│          FUENTES DE DATOS                   │
+│  (APIs, BD operacionales, archivos)        │
+└────────────────┬────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────┐
+│          CAPA DE INGESTA (ETL)             │
+│  (Python + Docker)                         │
+│  - Extracción desde APIs                   │
+│  - Transformación y limpieza               │
+│  - Validación de calidad                   │
+└────────────────┬────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────┐
+│      DATA WAREHOUSE (PostgreSQL)           │
+│  - Tablas de Hechos (Fact Tables)         │
+│  - Tablas de Dimensiones (Dimension Tables)│
+│  - Histórico de cambios                    │
+└────────────────┬────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────┐
+│      CAPA DE ANÁLISIS Y BI                 │
+│  (SQL, Python, Dashboards)                 │
+└─────────────────────────────────────────────┘
+            </code></pre>
+
+            <h3>Tablas de Hechos vs. Dimensiones</h3>
+            <div class="comparison-cards">
+                <div class="card">
+                    <h4>📊 Tabla de Hechos (Fact Table)</h4>
+                    <p><strong>Contiene:</strong> Métricas cuantificables (ventas, clics, temperatura)</p>
+                    <p><strong>Ejemplo:</strong> ventas_diarias(id_fecha, id_producto, id_cliente, cantidad, valor)</p>
+                </div>
+                <div class="card">
+                    <h4>🏷️ Tabla de Dimensión (Dimension Table)</h4>
+                    <p><strong>Contiene:</strong> Contexto descriptivo (fechas, productos, clientes)</p>
+                    <p><strong>Ejemplo:</strong> dim_producto(id_producto, nombre, categoría, proveedor)</p>
+                </div>
+            </div>
+
+            <h3>Schema Snowflake vs. Star</h3>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Star Schema</th>
+                            <th>Snowflake Schema</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Complejidad</td>
+                            <td>Simple</td>
+                            <td>Más compleja</td>
+                        </tr>
+                        <tr>
+                            <td>Normalización</td>
+                            <td>Desnormalizado</td>
+                            <td>Normalizado</td>
+                        </tr>
+                        <tr>
+                            <td>Velocidad de consultas</td>
+                            <td>Rápidas</td>
+                            <td>Más lentas</td>
+                        </tr>
+                        <tr>
+                            <td>Redundancia de datos</td>
+                            <td>Alta</td>
+                            <td>Baja</td>
+                        </tr>
+                        <tr>
+                            <td>Mantenimiento</td>
+                            <td>Fácil</td>
+                            <td>Complejo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="reflection-box">
+                <h4>💡 Recomendación</h4>
+                <p>Para empezar, usa <strong>Star Schema</strong>. Es más simple y las consultas son más rápidas. Conforme crezcas, considera Snowflake.</p>
+            </div>
+        </section>
+
+        <hr class="divider-thick">
+
+        <section id="pipeline" class="case-study-section">
+            <div class="case-header">
+                <h2>8. Pipeline Completo: API → Python → PostgreSQL</h2>
+                <h3>Caso Práctico Integrado</h3>
+            </div>
+
+            <h3>Escenario: Ingesta de Datos de Clima</h3>
+            <div class="scenario-box">
+                <p>Debes ingestar datos de temperatura de múltiples ciudades desde una API meteorológica, transformarlos y almacenarlos en PostgreSQL para análisis histórico.</p>
+            </div>
+
+            <h3>Paso 1: Estructura del Proyecto en Docker</h3>
+            <pre><code>mi-pipeline-datos/
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+├── src/
+│   ├── ingestor.py      # Consume API
+│   ├── transformador.py # Limpia y normaliza
+│   └── cargador.py      # Inserta en BD
+├── sql/
+│   └── schema.sql       # Definición de tablas
+└── logs/
+    └── pipeline.log     # Registro de ejecuciones</code></pre>
+
+            <h3>Paso 2: Dockerfile Completo</h3>
+            <pre><code>FROM python:3.11-slim
+
+WORKDIR /app
+
+# Copiar requirements
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar código
+COPY src/ ./src/
+COPY sql/ ./sql/
+
+# Variable para conexión a BD
+ENV DATABASE_URL=postgresql://dataminer:secure_pass@postgres:5432/datawarehouse
+
+# Ejecutar ingestor cada hora
+CMD ["python", "src/main.py"]</code></pre>
+
+            <h3>Paso 3: requirements.txt</h3>
+            <pre><code>requests==2.31.0
+pandas==2.1.0
+psycopg2-binary==2.9.9
+sqlalchemy==2.0.20
+python-dotenv==1.0.0
+pydantic==2.4.0
+schedule==1.2.0
+logging-config==0.4.0</code></pre>
+
+            <h3>Paso 4: Código Principal (ingestor.py)</h3>
+            <pre><code>import requests
+import pandas as pd
+from datetime import datetime
+import psycopg2
+from psycopg2.extras import execute_values
+import logging
+
+logging.basicConfig(filename='/app/logs/pipeline.log', level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+class IngestorClima:
+    def __init__(self, api_key):
+        self.api_key = api_key
+        self.base_url = "https://api.openweathermap.org/data/2.5/weather"
+        self.ciudades = ['Bogotá', 'Medellín', 'Cali', 'Barranquilla']
+    
+    def obtener_datos(self):
+        """Obtener datos de la API"""
+        datos = []
+        for ciudad in self.ciudades:
+            try:
+                response = requests.get(
+                    self.base_url,
+                    params={
+                        'q': ciudad,
+                        'appid': self.api_key,
+                        'units': 'metric'
+                    },
+                    timeout=10
+                )
+                response.raise_for_status()
+                
+                dato = response.json()
+                datos.append({
+                    'ciudad': dato['name'],
+                    'temperatura': dato['main']['temp'],
+                    'humedad': dato['main']['humidity'],
+                    'presion': dato['main']['pressure'],
+                    'descripcion': dato['weather'][0]['description'],
+                    'timestamp': datetime.now()
+                })
+                logger.info(f"✅ Datos obtenidos para {ciudad}")
+            except Exception as e:
+                logger.error(f"❌ Error ingesta {ciudad}: {e}")
+        
+        return pd.DataFrame(datos)
+    
+    def cargar_a_bd(self, df, db_url):
+        """Insertar datos en PostgreSQL"""
+        try:
+            conn = psycopg2.connect(db_url)
+            cursor = conn.cursor()
+            
+            # Preparar datos
+            valores = [
+                (row['ciudad'], row['temperatura'], row['humedad'], 
+                 row['presion'], row['descripcion'], row['timestamp'])
+                for _, row in df.iterrows()
+            ]
+            
+            # SQL de inserción
+            sql = """
+            INSERT INTO clima (ciudad, temperatura, humedad, presion, descripcion, timestamp)
+            VALUES %s
+            """
+            
+            execute_values(cursor, sql, valores)
+            conn.commit()
+            logger.info(f"✅ {len(df)} registros cargados en BD")
+            
+            cursor.close()
+            conn.close()
+        except Exception as e:
+            logger.error(f"❌ Error carga BD: {e}")
+
+# Uso
+if __name__ == "__main__":
+    ingestor = IngestorClima(api_key="tu_api_key")
+    df = ingestor.obtener_datos()
+    ingestor.cargar_a_bd(df, "postgresql://dataminer:secure_pass@postgres:5432/datawarehouse")</code></pre>
+
+            <h3>Paso 5: Schema SQL (schema.sql)</h3>
+            <pre><code>CREATE TABLE IF NOT EXISTS clima (
+    id SERIAL PRIMARY KEY,
+    ciudad VARCHAR(100),
+    temperatura NUMERIC(5,2),
+    humedad INTEGER,
+    presion INTEGER,
+    descripcion VARCHAR(200),
+    timestamp TIMESTAMP DEFAULT NOW(),
+    fecha_ingesta TIMESTAMP DEFAULT NOW()
+);
+
+CREATE INDEX idx_ciudad_timestamp ON clima(ciudad, timestamp);
+
+-- Vista para resumen diario
+CREATE OR REPLACE VIEW clima_diario AS
+SELECT
+    DATE(timestamp) as fecha,
+    ciudad,
+    AVG(temperatura) as temp_promedio,
+    MAX(temperatura) as temp_maxima,
+    MIN(temperatura) as temp_minima,
+    AVG(humedad) as humedad_promedio
+FROM clima
+GROUP BY DATE(timestamp), ciudad;</code></pre>
+
+            <h3>Paso 6: Docker Compose Completo</h3>
+            <pre><code>version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: dataminer
+      POSTGRES_PASSWORD: secure_pass
+      POSTGRES_DB: datawarehouse
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dataminer"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  python-app:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://dataminer:secure_pass@postgres:5432/datawarehouse
+      API_KEY: ${OPENWEATHER_API_KEY}
+    volumes:
+      - ./logs:/app/logs
+    restart: always
+
+volumes:
+  postgres_data:</code></pre>
+
+            <h3>Paso 7: Ejecutar Todo</h3>
+            <pre><code># Levantar la infraestructura
+docker-compose up -d
+
+# Ver logs en tiempo real
+docker-compose logs -f python-app
+
+# Verificar datos en BD
+docker exec -it postgres-container psql -U dataminer -d datawarehouse -c "SELECT * FROM clima LIMIT 10;"
+
+# Detener todo
+docker-compose down</code></pre>
+
+            <div class="reflection-box">
+                <h4>🎯 Checklist Final</h4>
+                <ul>
+                    <li>✅ API devuelve datos correctamente</li>
+                    <li>✅ Python transforma sin errores</li>
+                    <li>✅ PostgreSQL recibe los datos</li>
+                    <li>✅ Logs registran cada ejecución</li>
+                    <li>✅ Docker Compose levanta todo con un comando</li>
+                    <li>✅ Datos históricos se acumulan para análisis</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="docker-app">
+            <h2>9. Dockerización de Aplicaciones Python</h2>
+            <p>Aprende a encapsular tu aplicación de minería de datos en un contenedor Docker reutilizable.</p>
+
+            <h3>Multi-Stage Build (Optimizando Imagen)</h3>
+            <pre><code>FROM python:3.11-slim as builder
+
+WORKDIR /tmp
+COPY requirements.txt .
+RUN pip install --user --no-cache-dir -r requirements.txt
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Copiar solo lo necesario del builder
+COPY --from=builder /root/.local /root/.local
+COPY src/ ./src/
+
+ENV PATH=/root/.local/bin:$PATH
+
+CMD ["python", "src/main.py"]</code></pre>
+
+            <h3>.dockerignore (Evitar Archivos Innecesarios)</h3>
+            <pre><code>__pycache__
+*.pyc
+.git
+.gitignore
+.env
+.venv
+venv/
+*.log
+.pytest_cache
+.coverage
+.DS_Store
+node_modules/</code></pre>
+
+            <h3>Variables de Entorno Seguras</h3>
+            <pre><code># .env (nunca commitear a Git!)
+DATABASE_URL=postgresql://user:password@localhost/db
+API_KEY=tu_clave_secreta
+LOG_LEVEL=INFO
+
+# En docker-compose.yml
+env_file:
+  - .env
+
+# En Python
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+db_url = os.getenv('DATABASE_URL')
+api_key = os.getenv('API_KEY')</code></pre>
+
+            <h3>Health Checks en Docker</h3>
+            <pre><code>version: '3.8'
+services:
+  python-app:
+    build: .
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s</code></pre>
+        </section>
+
+        <hr class="divider">
+
+        <section id="debugging">
+            <h2>10. Monitoreo y Debugging en Contenedores</h2>
+            <p>Aprende a monitorear y debuggear aplicaciones corriendo en Docker.</p>
+
+            <h3>Logging Estructurado</h3>
+            <pre><code>import logging
+import json
+from datetime import datetime
+
+class JSONFormatter(logging.Formatter):
+    def format(self, record):
+        log_obj = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'level': record.levelname,
+            'logger': record.name,
+            'message': record.getMessage(),
+            'module': record.module,
+            'function': record.funcName,
+            'line': record.lineno
+        }
+        return json.dumps(log_obj)
+
+# Configurar
+handler = logging.StreamHandler()
+handler.setFormatter(JSONFormatter())
+logger = logging.getLogger(__name__)
+logger.addHandler(handler)
+logger.setLevel(logging.INFO)</code></pre>
+
+            <h3>Comandos Útiles Docker para Debugging</h3>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Comando</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>docker logs container-name</code></td>
+                            <td>Ver logs de un contenedor</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker logs -f container-name</code></td>
+                            <td>Ver logs en tiempo real</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker exec -it container-name bash</code></td>
+                            <td>Entrar en la terminal del contenedor</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker stats</code></td>
+                            <td>Ver uso de CPU, memoria, red</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker inspect container-name</code></td>
+                            <td>Ver configuración detallada</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Monitoreo con Prometheus (Avanzado)</h3>
+            <pre><code>from prometheus_client import Counter, Histogram, generate_latest
+import time
+
+# Definir métricas
+registros_procesados = Counter('registros_procesados_total', 'Total de registros procesados')
+tiempo_ingesta = Histogram('tiempo_ingesta_segundos', 'Tiempo de ingesta')
+errores_ingesta = Counter('errores_ingesta_total', 'Total de errores')
+
+@tiempo_ingesta.time()
+def ingestar_datos():
+    try:
+        # Lógica de ingesta
+        registros_procesados.inc(100)
+    except Exception as e:
+        errores_ingesta.inc()
+
+# Exponer métricas (para Prometheus)
+print(generate_latest())</code></pre>
+
+            <div class="reflection-box">
+                <h4>📊 Próxima Unidad</h4>
+                <p>Con este entorno listo, estarás preparado para iniciar análisis de minería de datos con técnicas avanzadas de clustering, clasificación y visualización.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>Material docente creado para: Ingeniería de Sistemas</p>
+            <p>Curso: Minería de Datos - Alistamiento del Entorno</p>
+            <p>© 2025 CORHUILA</p>
+            <p><strong>Recursos Recomendados:</strong></p>
+            <ul style="text-align: left; display: inline-block;">
+                <li><a href="https://www.docker.com/" target="_blank">🐳 Documentación Oficial Docker</a></li>
+                <li><a href="https://www.postgresql.org/" target="_blank">🐘 PostgreSQL Official</a></li>
+                <li><a href="https://pandas.pydata.org/" target="_blank">🐼 Pandas Documentation</a></li>
+                <li><a href="https://requests.readthedocs.io/" target="_blank">📡 Requests Library</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <button id="scrollTopBtn" title="Volver arriba">↑</button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
