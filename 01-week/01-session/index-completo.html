@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alistamiento del Entorno | Minería de Datos | Ingeniería de Sistemas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1e3c72;
+    --secondary-color: #2a5298;
+    --accent-color: #ff6b6b;
+    --light-bg: #f8f9fa;
+    --dark-text: #2c3e50;
+    --border-color: #e0e0e0;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-text);
+    background-color: #fff;
+}
+
+/* Header */
+.main-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 0;
+}
+
+.top-bar {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.brand-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 5px 0;
+}
+
+.main-nav {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    border-bottom: 3px solid transparent;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom-color: var(--accent-color);
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Main Content */
+.main-content {
+    padding: 50px 0;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: var(--secondary-color);
+    font-size: 2em;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+h4 {
+    color: var(--secondary-color);
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 60px 40px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.hero-section h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.lead {
+    font-size: 1.2em;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Divider */
+.divider {
+    border: none;
+    border-top: 2px solid var(--border-color);
+    margin: 40px 0;
+}
+
+.divider-thick {
+    border: none;
+    border-top: 3px solid var(--accent-color);
+    margin: 50px 0;
+}
+
+/* Definition Box */
+.definition-box {
+    background-color: #e8f4f8;
+    border-left: 5px solid var(--secondary-color);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-size: 1.05em;
+}
+
+/* Reflection Box */
+.reflection-box {
+    background-color: #fff3cd;
+    border-left: 5px solid var(--warning-color);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.reflection-box h4 {
+    color: #856404;
+    margin-bottom: 10px;
+}
+
+.reflection-box p {
+    color: #856404;
+    line-height: 1.7;
+}
+
+.reflection-box ul {
+    margin-left: 20px;
+    color: #856404;
+}
+
+/* Comparison Cards */
+.comparison-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card h3,
+.card h4 {
+    color: var(--secondary-color);
+    margin-top: 0;
+}
+
+.qa-card,
+.qc-card {
+    border-top: 4px solid;
+}
+
+.qa-card {
+    border-top-color: var(--success-color);
+}
+
+.qc-card {
+    border-top-color: var(--accent-color);
+}
+
+/* Strategy Grid */
+.strategy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+.strategy-box {
+    background-color: var(--light-bg);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.strategy-box h5 {
+    color: var(--secondary-color);
+    margin-bottom: 15px;
+}
+
+.strategy-box ul {
+    list-style-position: inside;
+    margin-left: 10px;
+}
+
+.strategy-box li {
+    margin-bottom: 8px;
+}
+
+.qa-box {
+    border-left-color: var(--success-color);
+    background-color: #f0f8f4;
+}
+
+.qc-box {
+    border-left-color: var(--accent-color);
+    background-color: #fff5f5;
+}
+
+/* Tables */
+.table-responsive {
+    overflow-x: auto;
+    margin: 30px 0;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table thead tr {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: left;
+    font-weight: 500;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.styled-table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+
+.styled-table tbody tr:nth-child(odd) {
+    background-color: #fafafa;
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.comparison-table th,
+.comparison-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Tags */
+.tag {
+    display: inline-block;
+    padding: 5px 12px;
+    margin: 5px 5px 5px 0;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.tag-performance {
+    background-color: #ffe5e5;
+    color: #c41e3a;
+}
+
+.tag-security {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.tag-functional {
+    background-color: #e7f3ff;
+    color: #004085;
+}
+
+.tag-compatibility {
+    background-color: #e2f5e2;
+    color: #155724;
+}
+
+/* Code Blocks */
+pre {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 20px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+code {
+    font-family: 'Courier New', monospace;
+    background-color: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--primary-color);
+}
+
+pre code {
+    background-color: transparent;
+    color: #f8f8f2;
+    padding: 0;
+}
+
+/* Case Study Section */
+.case-study-section {
+    background-color: var(--light-bg);
+    padding: 40px;
+    border-radius: 10px;
+    margin: 40px 0;
+}
+
+.case-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.case-header h2 {
+    border-left: none;
+    padding-left: 0;
+    margin-bottom: 10px;
+}
+
+.case-header h3 {
+    color: var(--accent-color);
+    font-size: 1.3em;
+}
+
+.scenario-box {
+    background: white;
+    border-left: 4px solid var(--accent-color);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.scenario-box h4 {
+    color: var(--secondary-color);
+    margin-top: 0;
+}
+
+.case-table {
+    margin: 30px 0;
+}
+
+/* Footer */
+.main-footer {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 50px;
+}
+
+.main-footer p {
+    margin: 8px 0;
+    font-size: 0.95em;
+}
+
+.main-footer ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.main-footer li {
+    margin: 8px 0;
+}
+
+.main-footer a {
+    color: #fff9e6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.main-footer a:hover {
+    color: var(--accent-color);
+}
+
+/* Scroll to Top Button */
+#scrollTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    padding: 15px 20px;
+    font-size: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 99;
+    transition: background-color 0.3s;
+}
+
+#scrollTopBtn:hover {
+    background-color: var(--accent-color);
+}
+
+/* Lists */
+ul, ol {
+    margin: 15px 0;
+    margin-left: 30px;
+}
+
+li {
+    margin: 8px 0;
+    line-height: 1.7;
+}
+
+/* Links */
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    .hero-section {
+        padding: 40px 20px;
+    }
+    
+    .main-nav ul {
+        flex-direction: column;
+    }
+    
+    .main-nav a {
+        padding: 10px 15px;
+        font-size: 13px;
+    }
+    
+    .comparison-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .strategy-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .styled-table {
+        font-size: 0.9em;
+    }
+    
+    .styled-table th,
+    .styled-table td {
+        padding: 10px;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="container brand-container">
+                <img src="https://drive.google.com/uc?export=view&id=1gdj8FITg5c_z4nzr5GaNw40hth3Ckq6_" alt="Logo Corhuila" class="logo-corhuila" style="max-width: 120px; height: auto; margin-bottom: 15px;">
+                <h1 class="brand-name">Minería de Datos</h1>
+                <p>Ingeniería de Sistemas</p>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul>
+                    <li><a href="#docker-intro">Docker</a></li>
+                    <li><a href="#docker-install">Instalación</a></li>
+                    <li><a href="#apis">APIs REST</a></li>
+                    <li><a href="#python-datos">Python & Datos</a></li>
+                    <li><a href="#transformacion">Transformación</a></li>
+                    <li><a href="#postgresql">PostgreSQL</a></li>
+                    <li><a href="#datawarehouse">Data Warehouse</a></li>
+                    <li><a href="#pipeline">Pipeline</a></li>
+                    <li><a href="#docker-app">Dockerización</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container main-content">
+
+        <section id="introduccion" class="hero-section">
+            <h1>Alistamiento del Entorno para Minería de Datos</h1>
+            <p class="lead">Aprende a configurar un entorno profesional con Docker, ingesta de datos por API, transformación con Python y almacenamiento en PostgreSQL. Este es el primer paso para realizar análisis de datos a nivel empresarial.</p>
+        </section>
+
+        <hr class="divider">
+
+        <section id="docker-intro">
+            <h2>1. Introducción a Docker y Contenedores</h2>
+            <p><strong>¿Por qué Docker?</strong> En minería de datos necesitamos ambientes reproducibles donde nuestro código funcione igual en la máquina del desarrollador, en pruebas y en producción.</p>
+            
+            <blockquote class="definition-box">
+                <strong>Docker:</strong> Plataforma de containerización que empaqueta tu aplicación con todas sus dependencias en una unidad aislada y portable.
+            </blockquote>
+
+            <h3>Conceptos Clave</h3>
+            <ul>
+                <li><strong>Imagen:</strong> Plantilla inmutable con tu código, librerías y configuración.</li>
+                <li><strong>Contenedor:</strong> Instancia ejecutable de una imagen. Es como una máquina virtual ligera.</li>
+                <li><strong>Registry:</strong> Repositorio de imágenes (Docker Hub, GitHub Container Registry).</li>
+                <li><strong>Docker Compose:</strong> Orquestación de múltiples contenedores con un solo archivo YAML.</li>
+            </ul>
+
+            <div class="reflection-box">
+                <h4>💡 ¿Por qué es importante?</h4>
+                <p>En proyectos de minería de datos colaborativos, Docker garantiza que todos usen el mismo entorno. No más "funciona en mi máquina".</p>
+            </div>
+
+            <h3>Ventajas para Minería de Datos</h3>
+            <div class="comparison-cards">
+                <div class="card">
+                    <h4>Sin Docker</h4>
+                    <ul>
+                        <li>Cada dev configura manualmente</li>
+                        <li>Conflictos de versiones</li>
+                        <li>Difícil reproducibilidad</li>
+                        <li>Deploy complejo</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4>Con Docker</h4>
+                    <ul>
+                        <li>Entorno idéntico para todos</li>
+                        <li>Versionado de infraestructura</li>
+                        <li>Reproducible 100%</li>
+                        <li>Deploy con un comando</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="docker-install">
+            <h2>2. Instalación y Configuración de Docker</h2>
+
+            <h3>Paso 1: Instalación según tu SO</h3>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Sistema Operativo</th>
+                            <th>Descargar</th>
+                            <th>Instrucciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Windows 10+</strong></td>
+                            <td><a href="https://docs.docker.com/desktop/install/windows-install/" target="_blank">Docker Desktop para Windows</a></td>
+                            <td>WSL2 recomendado; requiere Hyper-V. <a href="https://docs.docker.com/desktop/install/windows-install/" target="_blank">Ver guía oficial</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>macOS</strong></td>
+                            <td><a href="https://docs.docker.com/desktop/install/mac-install/" target="_blank">Docker Desktop para Mac</a></td>
+                            <td>Compatible con Intel y Apple Silicon. <a href="https://docs.docker.com/desktop/install/mac-install/" target="_blank">Ver guía oficial</a></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ubuntu/Linux</strong></td>
+                            <td><a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">Docker Engine para Ubuntu</a></td>
+                            <td>Post-install: agregar usuario al grupo docker. <a href="https://docs.docker.com/engine/install/ubuntu/" target="_blank">Ver guía oficial</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Paso 2: Verificar Instalación</h3>
+            <pre><code>docker --version
+docker run hello-world</code></pre>
+
+            <h3>Paso 3: Docker Compose para Minería de Datos</h3>
+            <p>Crea un archivo <code>docker-compose.yml</code> que defina tu stack completo:</p>
+
+            <pre><code>version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: dataminer
+      POSTGRES_PASSWORD: secure_pass
+      POSTGRES_DB: datawarehouse
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  python-app:
+    build: .
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgresql://dataminer:secure_pass@postgres:5432/datawarehouse
+    volumes:
+      - ./src:/app/src
+
+volumes:
+  postgres_data:</code></pre>
+
+            <div class="reflection-box">
+                <h4>💡 Consejo</h4>
+                <p>Docker Compose es tu mejor aliado. Con un solo comando (<code>docker-compose up</code>) levantas toda la infraestructura: BD, APIs, workers, todo.</p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="apis">
+            <h2>3. Fundamentos de APIs REST</h2>
+            <p>La ingesta de datos típicamente viene de APIs REST. Necesitas entender qué son y cómo consumirlas.</p>
+
+            <h3>¿Qué es una API REST?</h3>
+            <blockquote class="definition-box">
+                <strong>API REST:</strong> Interfaz que permite comunicación entre sistemas usando HTTP. Usa métodos GET, POST, PUT, DELETE para acceder a datos remotos.
+            </blockquote>
+
+            <h3>Conceptos Fundamentales</h3>
+            <div class="strategy-grid">
+                <div class="strategy-box qa-box">
+                    <h5>GET - Obtener Datos</h5>
+                    <p>Solicita datos sin modificar nada en el servidor.</p>
+                    <code>GET /api/usuarios/123</code>
+                </div>
+                <div class="strategy-box qc-box">
+                    <h5>POST - Enviar Datos</h5>
+                    <p>Crea nuevos recursos en el servidor.</p>
+                    <code>POST /api/usuarios</code>
+                </div>
+                <div class="strategy-box">
+                    <h5>Status Codes</h5>
+                    <ul>
+                        <li><strong>200:</strong> OK</li>
+                        <li><strong>404:</strong> No encontrado</li>
+                        <li><strong>500:</strong> Error del servidor</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Consumir una API con Python</h3>
+            <pre><code>import requests
+import json
+
+# Hacer una petición GET
+response = requests.get('https://api.ejemplo.com/datos')
+
+# Verificar que fue exitosa
+if response.status_code == 200:
+    datos = response.json()
+    print(json.dumps(datos, indent=2))
+else:
+    print(f"Error: {response.status_code}")</code></pre>
+
+            <h3>Apis Públicas Recomendadas para Práctica</h3>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>API</th>
+                            <th>Descripción</th>
+                            <th>Endpoint Base</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>JSONPlaceholder</td>
+                            <td>API fake para testing</td>
+                            <td>https://jsonplaceholder.typicode.com</td>
+                        </tr>
+                        <tr>
+                            <td>OpenWeather</td>
+                            <td>Datos climáticos globales</td>
+                            <td>https://api.openweathermap.org</td>
+                        </tr>
+                        <tr>
+                            <td>GitHub API</td>
+                            <td>Datos de repositorios</td>
+                            <td>https://api.github.com</td>
+                        </tr>
+                        <tr>
+                            <td>REST Countries</td>
+                            <td>Información de países</td>
+                            <td>https://restcountries.com/v3.1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="reflection-box">
+                <h4>📚 Recurso Recomendado</h4>
+                <p><a href="https://www.youtube.com/results?search_query=REST+API+python+requests" target="_blank">Tutorial: REST APIs con Python (YouTube)</a></p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="python-datos">
+            <h2>4. Ingesta de Datos desde APIs</h2>
+            <p>Ahora aprenderemos a traer datos de APIs externas, validarlos y guardarlos localmente.</p>
+
+            <h3>Pipeline Básico de Ingesta</h3>
+            <pre><code>import requests
+import pandas as pd
+from datetime import datetime
+
+# 1. Obtener datos de la API
+api_url = "https://jsonplaceholder.typicode.com/posts"
+response = requests.get(api_url)
+datos_raw = response.json()
+
+# 2. Convertir a DataFrame
+df = pd.DataFrame(datos_raw)
+
+# 3. Limpieza y validación
+df['fecha_ingesta'] = datetime.now()
+df = df.dropna(subset=['title'])  # Eliminar nulos en títulos
+
+# 4. Guardar localmente (antes de enviar a BD)
+df.to_csv('datos_ingesta.csv', index=False)
+print(f"✅ {len(df)} registros ingestados correctamente")</code></pre>
+
+            <h3>Manejo de Errores en Ingesta</h3>
+            <pre><code>import requests
+import time
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+def crear_sesion_robusta():
+    sesion = requests.Session()
+    reintentos = Retry(
+        total=3,
+        backoff_factor=0.5,
+        status_forcelist=[429, 500, 502, 503, 504]
+    )
+    adaptador = HTTPAdapter(max_retries=reintentos)
+    sesion.mount('http://', adaptador)
+    sesion.mount('https://', adaptador)
+    return sesion
+
+sesion = crear_sesion_robusta()
+try:
+    response = sesion.get('https://api.ejemplo.com/datos', timeout=10)
+    response.raise_for_status()
+except requests.exceptions.RequestException as e:
+    print(f"❌ Error en ingesta: {e}")</code></pre>
+
+            <div class="reflection-box">
+                <h4>⚠️ Punto Crítico</h4>
+                <p>Siempre implementa reintentos y timeouts. Las APIs pueden fallar, tu código debe ser resiliente.</p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="transformacion">
+            <h2>5. Transformación y Validación de Datos</h2>
+            <p>Una vez ingesta, los datos necesitan limpieza, transformación y validación antes de análisis.</p>
+
+            <h3>Pipeline de Transformación ETL</h3>
+            <pre><code>import pandas as pd
+import numpy as np
+
+# Cargar datos crudos
+df = pd.read_csv('datos_ingesta.csv')
+
+# 1. Validación de tipos
+df['fecha'] = pd.to_datetime(df['fecha'])
+df['valor'] = pd.to_numeric(df['valor'], errors='coerce')
+
+# 2. Limpieza: eliminar duplicados y nulos
+df = df.drop_duplicates()
+df = df.dropna(subset=['valor', 'fecha'])
+
+# 3. Normalización: estandarizar valores
+df['valor_normalizado'] = (df['valor'] - df['valor'].mean()) / df['valor'].std()
+
+# 4. Enriquecimiento: crear columnas derivadas
+df['año'] = df['fecha'].dt.year
+df['mes'] = df['fecha'].dt.month
+df['trimestre'] = df['fecha'].dt.quarter
+
+# 5. Validación de calidad
+print(f"Registros procesados: {len(df)}")
+print(f"Valores nulos restantes: {df.isnull().sum().sum()}")
+print(df.head())</code></pre>
+
+            <h3>Validación de Datos (Data Quality)</h3>
+            <pre><code>class ValidadorDatos:
+    @staticmethod
+    def validar_rango(df, columna, minimo, maximo):
+        """Verificar que valores estén en rango esperado"""
+        fuera_rango = df[(df[columna] < minimo) | (df[columna] > maximo)]
+        return len(fuera_rango) == 0
+
+    @staticmethod
+    def validar_duplicados(df):
+        """Detectar registros duplicados"""
+        return df.duplicated().sum()
+
+    @staticmethod
+    def generar_reporte(df):
+        """Reporte completo de calidad"""
+        return {
+            'total_registros': len(df),
+            'columnas': list(df.columns),
+            'valores_nulos': df.isnull().sum().to_dict(),
+            'duplicados': df.duplicated().sum()
+        }
+
+# Uso
+validador = ValidadorDatos()
+reporte = validador.generar_reporte(df)
+print(reporte)</code></pre>
+
+            <div class="reflection-box">
+                <h4>⚠️ Advertencia Crítica</h4>
+                <p>"Garbage In, Garbage Out" - Si los datos que cargas son malos, los análisis serán malos. Dedica tiempo a validación.</p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="postgresql">
+            <h2>6. PostgreSQL: Conceptos y Configuración</h2>
+            <p>PostgreSQL es la base de datos relacional más robusta para data warehouses. Aprende su arquitectura y cómo configurarla en Docker.</p>
+
+            <h3>¿Por qué PostgreSQL para Data Warehouse?</h3>
+            <ul>
+                <li>Soporte para datos complejos (JSON, arrays, tipos personalizados)</li>
+                <li>Escalabilidad horizontal con particionamiento</li>
+                <li>ACID compliance garantizado</li>
+                <li>Excelente para consultas analíticas</li>
+                <li>Open source y sin costos de licencia</li>
+            </ul>
+
+            <h3>Dockerfile para PostgreSQL Personalizado</h3>
+            <pre><code>FROM postgres:15-alpine
+
+# Variables de entorno
+ENV POSTGRES_USER=dataminer
+ENV POSTGRES_PASSWORD=secure_password
+ENV POSTGRES_DB=datawarehouse
+
+# Copiar script de inicialización
+COPY ./init-db.sql /docker-entrypoint-initdb.d/
+
+# Instalar extensiones útiles
+RUN apt-get update && apt-get install -y \
+    postgresql-contrib \
+    && rm -rf /var/lib/apt/lists/*
+
+EXPOSE 5432</code></pre>
+
+            <h3>Conexión desde Python</h3>
+            <pre><code>import psycopg2
+from psycopg2.extras import execute_values
+
+# Conexión
+conn = psycopg2.connect(
+    host='localhost',
+    database='datawarehouse',
+    user='dataminer',
+    password='secure_password',
+    port=5432
+)
+
+cursor = conn.cursor()
+
+# Crear tabla
+crear_tabla = """
+CREATE TABLE IF NOT EXISTS registros (
+    id SERIAL PRIMARY KEY,
+    timestamp TIMESTAMP DEFAULT NOW(),
+    valor NUMERIC,
+    categoría VARCHAR(50),
+    datos_json JSONB
+);
+"""
+cursor.execute(crear_tabla)
+
+# Insertar datos
+datos = [
+    (100.5, 'A', '{"origen": "API_1"}'),
+    (200.3, 'B', '{"origen": "API_2"}')
+]
+
+insertar = "INSERT INTO registros (valor, categoría, datos_json) VALUES %s"
+execute_values(cursor, insertar, datos)
+
+conn.commit()
+cursor.close()
+conn.close()
+print("✅ Datos insertados en PostgreSQL")</code></pre>
+
+            <h3>Consultas Útiles para Data Warehouse</h3>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Operación</th>
+                            <th>Comando SQL</th>
+                            <th>Caso de Uso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Agregar índice</td>
+                            <td><code>CREATE INDEX idx_fecha ON registros(timestamp);</code></td>
+                            <td>Acelerar búsquedas por fecha</td>
+                        </tr>
+                        <tr>
+                            <td>Vista materializada</td>
+                            <td><code>CREATE MATERIALIZED VIEW v_resumen AS SELECT...</code></td>
+                            <td>Pre-computar agregaciones</td>
+                        </tr>
+                        <tr>
+                            <td>Particionamiento</td>
+                            <td><code>PARTITION BY RANGE (YEAR(timestamp))</code></td>
+                            <td>Mejorar performance en tablas grandes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="reflection-box">
+                <h4>📚 Recurso Recomendado</h4>
+                <p><a href="https://www.youtube.com/results?search_query=PostgreSQL+tutorial+español" target="_blank">Tutorial: PostgreSQL desde Cero</a></p>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="datawarehouse">
+            <h2>7. Data Warehouse: Diseño y Arquitectura</h2>
+            <p>Un data warehouse es la "central de datos" donde se consolidan datos de múltiples fuentes para análisis.</p>
+
+            <h3>Conceptos Clave</h3>
+            <blockquote class="definition-box">
+                <strong>Data Warehouse:</strong> Repositorio centralizado de datos históricos, optimizado para consultas analíticas, no transaccionales.
+            </blockquote>
+
+            <h3>Arquitectura Típica</h3>
+            <pre><code>
+┌─────────────────────────────────────────────┐
+│          FUENTES DE DATOS                   │
+│  (APIs, BD operacionales, archivos)        │
+└────────────────┬────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────┐
+│          CAPA DE INGESTA (ETL)             │
+│  (Python + Docker)                         │
+│  - Extracción desde APIs                   │
+│  - Transformación y limpieza               │
+│  - Validación de calidad                   │
+└────────────────┬────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────┐
+│      DATA WAREHOUSE (PostgreSQL)           │
+│  - Tablas de Hechos (Fact Tables)         │
+│  - Tablas de Dimensiones (Dimension Tables)│
+│  - Histórico de cambios                    │
+└────────────────┬────────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────────┐
+│      CAPA DE ANÁLISIS Y BI                 │
+│  (SQL, Python, Dashboards)                 │
+└─────────────────────────────────────────────┘
+            </code></pre>
+
+            <h3>Tablas de Hechos vs. Dimensiones</h3>
+            <div class="comparison-cards">
+                <div class="card">
+                    <h4>Tablas de Hechos (Fact Tables)</h4>
+                    <p>Contienen métricas numéricas y referencias a dimensiones.</p>
+                    <strong>Ejemplo:</strong> Ventas (cantidad, monto)
+                </div>
+                <div class="card">
+                    <h4>Tablas de Dimensiones</h4>
+                    <p>Contexto descriptivo de los hechos.</p>
+                    <strong>Ejemplo:</strong> Cliente, Producto, Fecha
+                </div>
+            </div>
+
+            <h3>Schema Snowflake vs. Star</h3>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Star Schema</th>
+                            <th>Snowflake Schema</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Estructura</strong></td>
+                            <td>1 tabla de hechos + dimensiones planas</td>
+                            <td>1 tabla de hechos + dimensiones normalizadas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Complejidad</strong></td>
+                            <td>Baja (más simple)</td>
+                            <td>Alta (más complicado)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Performance</strong></td>
+                            <td>Rápido (menos JOINs)</td>
+                            <td>Más lento (más JOINs)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Almacenamiento</strong></td>
+                            <td>Mayor (datos desnormalizados)</td>
+                            <td>Menor (datos normalizados)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ideal para</strong></td>
+                            <td>Data Warehouse operativo</td>
+                            <td>Análisis muy granular</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="reflection-box">
+                <h4>💡 Recomendación</h4>
+                <p>Para empezar, usa <strong>Star Schema</strong>. Es más simple y las consultas son más rápidas. Conforme crezcas, considera Snowflake.</p>
+            </div>
+        </section>
+
+        <hr class="divider-thick">
+
+        <section id="pipeline" class="case-study-section">
+            <div class="case-header">
+                <h2>8. Caso Práctico: Pipeline Completo de Datos Climáticos</h2>
+                <h3>Ejemplo Real de Ingesta → Transformación → Almacenamiento</h3>
+            </div>
+
+            <h3>Escenario: Ingesta de Datos de Clima</h3>
+            <div class="scenario-box">
+                <h4>Requisitos:</h4>
+                <p>Construir un sistema que ingeste datos climáticos de OpenWeather cada hora, los transforme y los almacene en PostgreSQL dentro de Docker.</p>
+            </div>
+
+            <h3>Paso 1: Estructura del Proyecto en Docker</h3>
+            <pre><code>mi-pipeline-datos/
+├── Dockerfile
+├── docker-compose.yml
+├── requirements.txt
+├── src/
+│   ├── ingestor.py      # Consume API
+│   ├── transformador.py # Limpia y normaliza
+│   └── cargador.py      # Inserta en BD
+├── sql/
+│   └── schema.sql       # Definición de tablas
+└── logs/
+    └── pipeline.log     # Registro de ejecuciones</code></pre>
+
+            <h3>Paso 2: Dockerfile Completo</h3>
+            <pre><code>FROM python:3.11-slim
+
+WORKDIR /app
+
+# Copiar requirements
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copiar código
+COPY src/ ./src/
+COPY sql/ ./sql/
+
+# Variable para conexión a BD
+ENV DATABASE_URL=postgresql://dataminer:secure_pass@postgres:5432/datawarehouse
+
+# Ejecutar ingestor cada hora
+CMD ["python", "src/main.py"]</code></pre>
+
+            <h3>Paso 3: requirements.txt</h3>
+            <pre><code>requests==2.31.0
+pandas==2.1.0
+psycopg2-binary==2.9.9
+sqlalchemy==2.0.20
+python-dotenv==1.0.0
+pydantic==2.4.0
+schedule==1.2.0
+logging-config==0.4.0</code></pre>
+
+            <h3>Paso 4: Código Principal (ingestor.py)</h3>
+            <pre><code>import requests
+import pandas as pd
+from datetime import datetime
+import psycopg2
+from psycopg2.extras import execute_values
+import logging
+
+logging.basicConfig(filename='/app/logs/pipeline.log', level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+class IngestorClima:
+    def __init__(self, api_key):
+        self.api_key = api_key
+        self.base_url = "https://api.openweathermap.org/data/2.5/weather"
+        self.ciudades = ['Bogotá', 'Medellín', 'Cali', 'Barranquilla']
+    
+    def obtener_datos(self):
+        """Obtener datos de la API"""
+        datos = []
+        for ciudad in self.ciudades:
+            try:
+                response = requests.get(self.base_url, params={
+                    'q': ciudad,
+                    'appid': self.api_key,
+                    'units': 'metric'
+                })
+                if response.status_code == 200:
+                    datos.append(response.json())
+            except Exception as e:
+                logger.error(f"Error ingesta {ciudad}: {e}")
+        return pd.DataFrame(datos)
+    
+    def cargar_a_bd(self, df, db_url):
+        """Insertar datos en PostgreSQL"""
+        try:
+            conn = psycopg2.connect(db_url)
+            cursor = conn.cursor()
+            
+            insertar = """
+                INSERT INTO clima (ciudad, temperatura, humedad, descripcion)
+                VALUES %s
+            """
+            datos = [(row['name'], row['main']['temp'], row['main']['humidity'], 
+                     row['weather'][0]['description']) for _, row in df.iterrows()]
+            
+            execute_values(cursor, insertar, datos)
+            conn.commit()
+            cursor.close()
+            conn.close()
+            logger.info(f"✅ {len(datos)} registros insertados")
+        except Exception as e:
+            logger.error(f"❌ Error carga BD: {e}")
+
+# Uso
+if __name__ == "__main__":
+    ingestor = IngestorClima(api_key="tu_api_key")
+    df = ingestor.obtener_datos()
+    ingestor.cargar_a_bd(df, "postgresql://dataminer:secure_pass@postgres:5432/datawarehouse")</code></pre>
+
+            <h3>Paso 5: Schema SQL (schema.sql)</h3>
+            <pre><code>CREATE TABLE IF NOT EXISTS clima (
+    id SERIAL PRIMARY KEY,
+    ciudad VARCHAR(100),
+    temperatura NUMERIC(5,2),
+    humedad INTEGER,
+    presion INTEGER,
+    descripcion VARCHAR(200),
+    timestamp TIMESTAMP DEFAULT NOW(),
+    fecha_ingesta TIMESTAMP DEFAULT NOW()
+);
+
+CREATE INDEX idx_ciudad_timestamp ON clima(ciudad, timestamp);
+
+-- Vista para resumen diario
+CREATE OR REPLACE VIEW clima_diario AS
+SELECT
+    DATE(timestamp) as fecha,
+    ciudad,
+    AVG(temperatura) as temp_promedio,
+    MAX(temperatura) as temp_maxima,
+    MIN(temperatura) as temp_minima,
+    AVG(humedad) as humedad_promedio
+FROM clima
+GROUP BY DATE(timestamp), ciudad;</code></pre>
+
+            <h3>Paso 6: Docker Compose Completo</h3>
+            <pre><code>version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: dataminer
+      POSTGRES_PASSWORD: secure_pass
+      POSTGRES_DB: datawarehouse
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U dataminer"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  python-app:
+    build: .
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://dataminer:secure_pass@postgres:5432/datawarehouse
+      API_KEY: ${OPENWEATHER_API_KEY}
+    volumes:
+      - ./logs:/app/logs
+    restart: always
+
+volumes:
+  postgres_data:</code></pre>
+
+            <h3>Paso 7: Ejecutar Todo</h3>
+            <pre><code># Levantar la infraestructura
+docker-compose up -d
+
+# Ver logs en tiempo real
+docker-compose logs -f python-app
+
+# Verificar datos en BD
+docker exec -it postgres-container psql -U dataminer -d datawarehouse -c "SELECT * FROM clima LIMIT 10;"
+
+# Detener todo
+docker-compose down</code></pre>
+
+            <div class="reflection-box">
+                <h4>🎯 Checklist Final</h4>
+                <ul>
+                    <li>✅ Contenedores corriendo sin errores</li>
+                    <li>✅ Datos ingestan cada hora</li>
+                    <li>✅ PostgreSQL recibe datos correctamente</li>
+                    <li>✅ Logs muestran operaciones exitosas</li>
+                    <li>✅ Se pueden ejecutar queries en vivas</li>
+                </ul>
+            </div>
+        </section>
+
+        <hr class="divider">
+
+        <section id="docker-app">
+            <h2>9. Dockerización de Aplicaciones Python</h2>
+            <p>Aprende a encapsular tu aplicación de minería de datos en un contenedor Docker reutilizable.</p>
+
+            <h3>Multi-Stage Build (Optimizando Imagen)</h3>
+            <pre><code>FROM python:3.11-slim as builder
+
+WORKDIR /tmp
+COPY requirements.txt .
+RUN pip install --user --no-cache-dir -r requirements.txt
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Copiar solo lo necesario del builder
+COPY --from=builder /root/.local /root/.local
+COPY src/ ./src/
+
+ENV PATH=/root/.local/bin:$PATH
+
+CMD ["python", "src/main.py"]</code></pre>
+
+            <h3>.dockerignore (Evitar Archivos Innecesarios)</h3>
+            <pre><code>__pycache__
+*.pyc
+.git
+.gitignore
+.env
+.venv
+venv/
+*.log
+.pytest_cache
+.coverage
+.DS_Store
+node_modules/</code></pre>
+
+            <h3>Variables de Entorno Seguras</h3>
+            <pre><code># .env (nunca commitear a Git!)
+DATABASE_URL=postgresql://user:password@localhost/db
+API_KEY=tu_clave_secreta
+LOG_LEVEL=INFO
+
+# En docker-compose.yml
+env_file:
+  - .env
+
+# En Python
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+db_url = os.getenv('DATABASE_URL')
+api_key = os.getenv('API_KEY')</code></pre>
+
+            <h3>Health Checks en Docker</h3>
+            <pre><code>version: '3.8'
+services:
+  python-app:
+    build: .
+    healthcheck:
+      test: ["CMD", "python", "-c", "import sys; exit(0)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3</code></pre>
+
+            <h3>Logging Estructurado para Producción</h3>
+            <pre><code>import json
+import logging
+from datetime import datetime
+
+class JSONFormatter(logging.Formatter):
+    def format(self, record):
+        log_obj = {
+            'timestamp': datetime.utcnow().isoformat(),
+            'level': record.levelname,
+            'message': record.getMessage(),
+            'module': record.module
+        }
+        return json.dumps(log_obj)
+
+# Configurar
+handler = logging.StreamHandler()
+handler.setFormatter(JSONFormatter())
+logger = logging.getLogger(__name__)
+logger.addHandler(handler)
+logger.setLevel(logging.INFO)</code></pre>
+
+            <h3>Comandos Útiles Docker para Debugging</h3>
+            <div class="table-responsive">
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Comando</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>docker logs -f contenedor</code></td>
+                            <td>Ver logs en tiempo real</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker exec -it contenedor bash</code></td>
+                            <td>Entrar a terminal del contenedor</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker inspect contenedor</code></td>
+                            <td>Ver detalles completos del contenedor</td>
+                        </tr>
+                        <tr>
+                            <td><code>docker stats</code></td>
+                            <td>Monitorear CPU, memoria, red en tiempo real</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Monitoreo con Prometheus (Avanzado)</h3>
+            <pre><code>from prometheus_client import Counter, Histogram, generate_latest
+import time
+
+# Definir métricas
+registros_procesados = Counter('registros_procesados_total', 'Total de registros procesados')
+tiempo_ingesta = Histogram('tiempo_ingesta_segundos', 'Tiempo de ingesta')
+errores_ingesta = Counter('errores_ingesta_total', 'Total de errores')
+
+@tiempo_ingesta.time()
+def ingestar_datos():
+    try:
+        # Lógica de ingesta
+        registros_procesados.inc(100)
+    except Exception as e:
+        errores_ingesta.inc()
+
+# Exponer métricas (para Prometheus)
+print(generate_latest())</code></pre>
+
+            <div class="reflection-box">
+                <h4>📊 Próxima Unidad</h4>
+                <p>Con este entorno listo, estarás preparado para iniciar análisis de minería de datos con técnicas avanzadas de clustering, clasificación y visualización.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <h3>Minería de Datos - Ingeniería de Sistemas</h3>
+            <p><strong>Creado por:</strong> Ing. Julian Quimbayo Castro</p>
+            <p>Última actualización: Enero 2026</p>
+            <p>Este material es de uso educativo. Para más información, consulta la documentación oficial de Docker, PostgreSQL y Python.</p>
+            <ul>
+                <li><a href="https://docs.docker.com" target="_blank">Documentación Docker</a></li>
+                <li><a href="https://www.postgresql.org/docs" target="_blank">Documentación PostgreSQL</a></li>
+                <li><a href="https://docs.python-requests.org" target="_blank">Python Requests</a></li>
+            </ul>
+            <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.9;">© Corporación Universitaria de Huila - Corhuila</p>
+        </div>
+    </footer>
+
+    <button id="scrollTopBtn" title="Volver arriba">↑</button>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    setupScrollButton();
+    setupNavigation();
+    setupSmoothScroll();
+    highlightActiveSection();
+});
+
+// Scroll to Top Button
+function setupScrollButton() {
+    const scrollBtn = document.getElementById('scrollTopBtn');
+
+    window.addEventListener('scroll', function() {
+        if (document.documentElement.scrollTop > 300 || document.body.scrollTop > 300) {
+            scrollBtn.style.display = 'block';
+        } else {
+            scrollBtn.style.display = 'none';
+        }
+    });
+
+    scrollBtn.addEventListener('click', function() {
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+    });
+}
+
+// Smooth Scroll
+function setupSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+}
+
+// Active Navigation Highlight
+function setupNavigation() {
+    const navLinks = document.querySelectorAll('.main-nav a');
+
+    window.addEventListener('scroll', highlightActiveSection);
+}
+
+function highlightActiveSection() {
+    const navLinks = document.querySelectorAll('.main-nav a');
+    let current = '';
+
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Copy Code to Clipboard (Bonus)
+document.querySelectorAll('pre').forEach(pre => {
+    const button = document.createElement('button');
+    button.textContent = '📋 Copiar';
+    button.style.cssText = `
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        padding: 8px 12px;
+        background-color: #27ae60;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 12px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    `;
+
+    pre.style.position = 'relative';
+    pre.appendChild(button);
+
+    pre.addEventListener('mouseenter', () => {
+        button.style.opacity = '1';
+    });
+
+    pre.addEventListener('mouseleave', () => {
+        button.style.opacity = '0';
+    });
+
+    button.addEventListener('click', () => {
+        const code = pre.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            const originalText = button.textContent;
+            button.textContent = '✅ Copiado!';
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        });
+    });
+});
+
+// Lazy Load Images (Si los usas)
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                img.src = img.dataset.src;
+                imageObserver.unobserve(img);
+            }
+        });
+    });
+
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+// Analytics (Opcional)
+function trackSection(sectionId) {
+    console.log(`Usuario visitó: ${sectionId}`);
+    // Aquí puedes enviar a Google Analytics o tu sistema de tracking
+}
+
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            trackSection(section.id);
+        }
+    });
+});
+    </script>
+</body>
+</html>
