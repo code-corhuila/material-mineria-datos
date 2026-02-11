@@ -1,0 +1,295 @@
+╔════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                ║
+║         🌡️ ETL WEATHERSTACK - TUTORIAL COMPLETO DE MINERÍA DE DATOS           ║
+║                                                                                ║
+║                    Corporación Universitaria de Huila                          ║
+║                                  CORHUILA                                      ║
+║                         Ingeniería de Sistemas - 2026                          ║
+║                                                                                ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+
+🎯 BIENVENIDO AL PROYECTO ETL COMPLETO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Este proyecto te enseña a crear un PIPELINE ETL PROFESIONAL comprendiendo:
+
+  ✅ Extracción de datos desde APIs
+  ✅ Transformación y normalización
+  ✅ Carga en múltiples formatos
+  ✅ Versionamiento con Git/GitHub
+  ✅ Visualización de diagramas
+
+Time: 3-4 horas | Nivel: Principiante | Requisitos: Conocimientos básicos de Python
+
+
+📂 ARCHIVOS EN ESTA CARPETA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. 📖 etl-weatherstack-tutorial.html (51 KB) ⭐ EMPIEZA AQUÍ
+   ├─ Tutorial interactivo completo en HTML
+   ├─ 4 fases principales explicadas paso a paso
+   ├─ Diagramas visuales del proceso
+   ├─ Código de ejemplo para cada fase
+   └─ Abre en tu navegador: explorer etl-weatherstack-tutorial.html
+
+2. 🐍 extractor.py (15.2 KB)
+   ├─ Script principal del ETL
+   ├─ Clase WeatherstackExtractor con todos los métodos
+   ├─ Extrae de 5 ciudades por defecto
+   ├─ Guarda en CSV y JSON
+   ├─ Logging completo
+   └─ Uso: python extractor.py
+
+3. 📊 etl_diagram.py (15 KB)
+   ├─ Librería para generar diagramas visuales
+   ├─ Crea 3 tipos de diagramas PNG
+   ├─ Muestra flujo, componentes y transformación
+   └─ Uso: python etl_diagram.py
+
+4. 📋 README.md (9.6 KB)
+   ├─ Documentación completa del proyecto
+   ├─ Explicación de cada archivo
+   ├─ Guía de instalación y uso
+   ├─ Troubleshooting y soluciones
+   └─ Recursos adicionales de aprendizaje
+
+5. 📦 requirements.txt (0.1 KB)
+   ├─ Lista de dependencias Python
+   ├─ requests, pandas, matplotlib, python-dotenv
+   └─ Instala con: pip install -r requirements.txt
+
+6. 🔐 .env.example (0.8 KB)
+   ├─ Template de configuración
+   ├─ Copia a .env y llena tus valores
+   ├─ NO commitear .env real a GitHub
+   └─ Variables: API_KEY, CIUDADES, etc.
+
+7. ✒️ .gitignore (0.9 KB)
+   ├─ Archivos a ignorar en Git
+   ├─ Protege .env, datos, logs
+   └─ Usa este en tu repositorio GitHub
+
+
+🚀 INICIO RÁPIDO (5 MINUTOS)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PASO 1: Abre el Tutorial
+  → Abre etl-weatherstack-tutorial.html en tu navegador
+  → Lee las 4 fases en orden
+
+
+PASO 2: Consigue API Key
+  → Según Fase 2 del tutorial
+  → Ve a https://weatherstack.com/
+  → Obtén tu API_KEY
+
+
+PASO 3: Configura tu Proyecto
+  → Copia .env.example a .env
+  → Edita .env y agrega tu API_KEY
+  → python -m venv venv
+  → source venv/bin/activate (o .\venv\Scripts\Activate.ps1 en Windows)
+  → pip install -r requirements.txt
+
+
+PASO 4: Ejecuta
+  → python extractor.py
+  → Verás tabla de datos en consola
+  → Se crean archivos en carpeta "data/"
+
+
+PASO 5: Sube a GitHub
+  → Sigue Fase 4 del tutorial
+  → git init
+  → git add .
+  → git commit -m "Initial ETL project"
+  → git remote add origin https://github.com/tu_usuario/repo
+  → git push -u origin main
+
+
+✨ RESULTADO FINAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Después de ejecutar todo, tendrás:
+
+📊 data/clima.csv
+   └─ Datos en formato tabular (Excel-compatible)
+
+📊 data/clima.json
+   └─ Datos en formato JSON (estructurado)
+
+📈 data/etl_flujo_principal.png
+   └─ Diagrama visual del flujo completo
+
+📈 data/etl_componentes.png
+   └─ Diagrama de componentes del sistema
+
+📈 data/etl_flujo_datos.png
+   └─ Transformación de datos paso a paso
+
+📝 logs/etl_YYYYMMDD_HHMMSS.log
+   └─ Registro completo de la ejecución
+
+🌐 https://github.com/tu_usuario/etl-weatherstack
+   └─ Tu código público en GitHub
+
+
+🎓 LO QUE APRENDERAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Conceptos (Qué):
+  ✓ Qué es un ETL
+  ✓ Qué es una API REST
+  ✓ Qué es la minería de datos
+  ✓ Qué es un Data Pipeline
+
+Herramientas (Cómo):
+  ✓ Python avanzado (clases, logging, type hints)
+  ✓ Bibliotecas: requests, pandas, matplotlib
+  ✓ Variables de entorno y secretos
+  ✓ Git y GitHub
+  ✓ WSL para desarrollo en Windows
+  ✓ VS Code Remote
+
+Prácticas (Por qué):
+  ✓ Manejo robusto de errores
+  ✓ Logging y debugging
+  ✓ Validación de datos
+  ✓ Documentación profesional
+  ✓ Seguridad (credenciales)
+  ✓ Versionamiento de código
+
+
+🆘 PROBLEMAS COMUNES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ "API_KEY not found"
+   → Copia .env.example a .env
+   → Edita .env con tu clave real
+   → Sin espacios: API_KEY=a1b2c3d4
+
+❌ "ModuleNotFoundError"
+   → pip install -r requirements.txt
+
+❌ "No data retrieved"
+   → Verifica conexión a internet
+   → Verifica API key correcta
+   → Verifica límite de solicitudes (Free: 250/mes)
+
+❌ "Permission denied"
+   → Linux/Mac: chmod +x extractor.py
+   → O simplemente: python3 extractor.py
+
+
+📚 ESTRUCTURA DEL APRENDIZAJE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DÍA 1: Teoría (30 minutos)
+  □ Lee introdución del HTML
+  □ Entiende qué es ETL
+  □ Aprende sobre APIs REST
+  □ Visualiza el diagrama del proceso
+
+DÍA 2: Configuración (45 minutos)
+  □ Instala WSL Ubuntu 24 (Fase 1)
+  □ Configura Python 3.11+
+  □ Instala VS Code Remote
+  □ Listo el entorno
+
+DÍA 3: Credenciales (20 minutos)
+  □ Registrate en Weatherstack (Fase 2)
+  □ Obtén tu API Key
+  □ Configura en .env
+  □ Prueba conexión
+
+DÍA 4: Implementación (60 minutos)
+  □ Instala dependencias
+  □ Ejecuta extractor.py
+  □ Analiza los datos generados
+  □ Experimenta con modificaciones
+
+DÍA 5: Versionamiento (40 minutos)
+  □ Crea repos en GitHub (Fase 4)
+  □ Configura Git localmente
+  □ Haz primeros commits
+  □ Pushea a GitHub
+
+
+🎯 DESAFÍOS PROGRESIVOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🟢 NIVEL BÁSICO (30 min)
+  [ ] Ejecutar extractor.py sin errores
+  [ ] Generar archivos CSV y JSON
+  [ ] Entender el flujo completo
+  [ ] Subir a GitHub
+
+🟡 NIVEL INTERMEDIO (2 horas)
+  [ ] Agregar 5 ciudades más
+  [ ] Cambiar formato de salida
+  [ ] Crear script personalizado
+  [ ] Agregar validaciones extra
+
+🔴 NIVEL AVANZADO (4+ horas)
+  [ ] Automatizar con schedule
+  [ ] Integrar PostgreSQL
+  [ ] Dashboard en Streamlit
+  [ ] Docker Compose
+  [ ] GitHub Actions CI/CD
+
+
+📞 SOPORTE Y RECURSOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Documentación Oficial:
+  • API Weatherstack: https://weatherstack.com/documentation
+  • Python Requests: https://requests.readthedocs.io/
+  • Pandas: https://pandas.pydata.org/docs/
+  • Matplotlib: https://matplotlib.org/
+  • Git/GitHub: https://guides.github.com/
+
+Tutoriales:
+  • WSL Setup: https://docs.microsoft.com/en-us/windows/wsl/
+  • Python ETL: https://www.youtube.com/results?search_query=python+etl
+  • GitHub Basics: https://www.youtube.com/results?search_query=github+tutorial
+
+Comunidades:
+  • Stack Overflow: stackoverflow.com
+  • GitHub Discussions: github.com/discussions
+  • Reddit: r/Python, r/learnprogramming
+
+
+✅ CHECKLIST DE FINALIZACIÓN
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Antes de Presentar:
+  [ ] He leído todo el tutorial HTML
+  [ ] WSL Ubuntu 24 está instalado
+  [ ] API Key de Weatherstack obtenida
+  [ ] extractor.py se ejecuta sin errores
+  [ ] CSV y JSON generados correctamente
+  [ ] Diagramas ETL visualizados
+  [ ] Repositorio GitHub creado
+  [ ] Código pusheado a GitHub
+  [ ] README.md completo en GitHub
+  [ ] .env no está en GitHub (verificado)
+  [ ] Primera prueba exitosa documentada
+
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+                        ¡COMIENZA TU VIAJE EN DATA ENGINEERING!
+
+        "Un ETL es como una receta de cocina: necesitas buenos ingredientes
+        (datos), seguir los pasos (transformación) y servir un plato delicioso
+        (insights). Vamos a cocinar!"
+
+═══════════════════════════════════════════════════════════════════════════════════
+
+Tutorial creado: 11 de Febrero, 2026
+Versión: 1.0
+Duración total: 3-4 horas
+Nivel recomendado: Principiante a Intermedio
+
+© 2026 Corporación Universitaria de Huila - Material Educativo Autorizado
