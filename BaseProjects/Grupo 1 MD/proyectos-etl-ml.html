@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16 Proyectos ETL, Dashboard y ML | Minería de Datos | Ingeniería de Sistemas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1e3c72;
+    --secondary-color: #2a5298;
+    --accent-color: #ff6b6b;
+    --light-bg: #f8f9fa;
+    --dark-text: #2c3e50;
+    --border-color: #e0e0e0;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --code-bg: #2d2d2d;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-text);
+    background-color: #fff;
+}
+
+/* Header */
+.main-header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 0;
+}
+
+.top-bar {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.brand-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.logo-img {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+    transform: scale(1.05);
+}
+
+.brand-name {
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.main-nav {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+}
+
+.main-nav a {
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom-color: var(--accent-color);
+}
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Main Content */
+.main-content {
+    padding: 50px 0;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: var(--secondary-color);
+    font-size: 2em;
+    margin-bottom: 25px;
+    border-left: 5px solid var(--accent-color);
+    padding-left: 15px;
+}
+
+h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+h4 {
+    color: var(--secondary-color);
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    padding: 60px 40px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.hero-section h1 {
+    color: white;
+    margin-bottom: 20px;
+}
+
+.hero-section .lead {
+    font-size: 1.2em;
+    line-height: 1.8;
+}
+
+.lead {
+    font-size: 1.1em;
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto 20px;
+}
+
+/* Dividers */
+.divider {
+    border: none;
+    border-top: 2px solid var(--border-color);
+    margin: 40px 0;
+}
+
+.divider-thick {
+    border: none;
+    border-top: 3px solid var(--accent-color);
+    margin: 50px 0;
+}
+
+/* Definition Box */
+.definition-box {
+    background-color: #e8f4f8;
+    border-left: 5px solid var(--secondary-color);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-size: 1.05em;
+}
+
+/* Reflection Box */
+.reflection-box {
+    background-color: #fff3cd;
+    border-left: 5px solid var(--warning-color);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.reflection-box h4 {
+    color: #856404;
+    margin-bottom: 10px;
+}
+
+.reflection-box p,
+.reflection-box ul {
+    color: #856404;
+    line-height: 1.7;
+}
+
+.reflection-box ul {
+    margin-left: 20px;
+}
+
+.reflection-box li {
+    margin-bottom: 8px;
+}
+
+/* Success Box */
+.success-box {
+    background-color: #d4edda;
+    border-left: 5px solid var(--success-color);
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.success-box h4 {
+    color: #155724;
+    margin-bottom: 10px;
+}
+
+.success-box p {
+    color: #155724;
+    line-height: 1.7;
+}
+
+/* Cards */
+.card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin: 15px 0;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card h3,
+.card h4 {
+    color: var(--secondary-color);
+    margin-top: 0;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
+}
+
+/* Project Card - Accordion */
+.project-card {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.project-card.active {
+    border-color: var(--accent-color);
+    box-shadow: 0 6px 16px rgba(255, 107, 107, 0.2);
+}
+
+.project-card .project-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 25px;
+    cursor: pointer;
+    background: white;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+.project-card .project-title:hover {
+    background-color: var(--light-bg);
+    transform: none;
+}
+
+.project-card .project-title::after {
+    content: '';
+    margin-left: auto;
+    width: 20px;
+    height: 20px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="%232a5298" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat center;
+    background-size: contain;
+    transition: transform 0.3s ease;
+}
+
+.project-card.active .project-title::after {
+    transform: rotate(180deg);
+}
+
+.project-card .project-number {
+    background-color: var(--secondary-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.project-card h3 {
+    margin: 0;
+    color: var(--primary-color);
+}
+
+.project-card .api-tag {
+    display: inline-block;
+    background-color: #e8f4f8;
+    color: var(--secondary-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.project-card .project-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 25px;
+}
+
+.project-card.active .project-content {
+    max-height: 2000px;
+    padding: 0 25px 25px 25px;
+}
+
+.project-card .description {
+    color: var(--dark-text);
+    line-height: 1.7;
+    margin: 15px 0;
+}
+
+.project-card .api-link {
+    background-color: var(--light-bg);
+    padding: 10px;
+    border-left: 4px solid var(--secondary-color);
+    margin: 15px 0;
+    border-radius: 4px;
+    word-break: break-all;
+}
+
+.project-card .api-link a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.project-card .api-link a:hover {
+    text-decoration: underline;
+}
+
+.deliverables {
+    background-color: var(--light-bg);
+    padding: 15px;
+    border-radius: 5px;
+    margin: 15px 0;
+}
+
+.deliverables h5 {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.deliverables ol {
+    margin-left: 20px;
+    color: var(--dark-text);
+}
+
+.deliverables li {
+    margin-bottom: 8px;
+    line-height: 1.6;
+}
+
+/* Code Blocks */
+pre {
+    background-color: var(--code-bg);
+    color: #f8f8f2;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 20px 0;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.95em;
+    line-height: 1.5;
+    border-left: 4px solid var(--accent-color);
+    position: relative;
+}
+
+code {
+    font-family: 'Fira Code', 'Courier New', monospace;
+    background-color: #f4f4f4;
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--primary-color);
+}
+
+pre code {
+    background-color: transparent;
+    color: #f8f8f2;
+    padding: 0;
+}
+
+/* Tables */
+.table-responsive {
+    overflow-x: auto;
+    margin: 30px 0;
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.styled-table thead tr {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: left;
+    font-weight: 500;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.styled-table tbody tr:hover {
+    background-color: var(--light-bg);
+}
+
+.styled-table tbody tr:nth-child(odd) {
+    background-color: #fafafa;
+}
+
+/* Lists */
+ul, ol {
+    margin: 15px 0;
+    margin-left: 30px;
+}
+
+li {
+    margin: 8px 0;
+    line-height: 1.7;
+}
+
+/* Links */
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--accent-color);
+    text-decoration: underline;
+}
+
+/* Rubric */
+.rubric-container {
+    margin: 30px 0;
+}
+
+.rubric-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+}
+
+.rubric-criteria {
+    border: 1px solid var(--border-color);
+    margin-bottom: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.criteria-title {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.criteria-content {
+    padding: 20px;
+}
+
+.rubric-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.rubric-cell {
+    background-color: var(--light-bg);
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid var(--secondary-color);
+}
+
+.rubric-cell.excellent {
+    border-left-color: #27ae60;
+    background-color: #d4edda;
+}
+
+.rubric-cell.good {
+    border-left-color: #f39c12;
+    background-color: #fff3cd;
+}
+
+.rubric-cell.fair {
+    border-left-color: #e74c3c;
+    background-color: #f8d7da;
+}
+
+.rubric-cell.poor {
+    border-left-color: #c0392b;
+    background-color: #f0827d;
+}
+
+.rubric-cell h4 {
+    font-size: 1em;
+    margin-bottom: 8px;
+}
+
+.rubric-cell p {
+    font-size: 0.9em;
+    margin: 0;
+}
+
+/* Step Box */
+.step-box {
+    background-color: var(--light-bg);
+    border-left: 5px solid var(--secondary-color);
+    padding: 25px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.step-number {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 35px;
+    font-weight: bold;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.step-box h3 {
+    display: flex;
+    align-items: center;
+    margin-top: 0;
+}
+
+.step-box h3 .step-number {
+    margin-top: 0;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 40px 0;
+}
+
+.pagination button {
+    background-color: white;
+    border: 2px solid var(--secondary-color);
+    color: var(--secondary-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.pagination button:hover,
+.pagination button.active {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+/* Feature List */
+.feature-list {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.feature-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.feature-list li:before {
+    content: "✓ ";
+    color: var(--success-color);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Footer */
+.main-footer {
+    background: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+    margin-top: 50px;
+}
+
+.main-footer p {
+    margin: 10px 0;
+}
+
+.main-footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.main-footer li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.main-footer a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.main-footer a:hover {
+    color: var(--accent-color);
+}
+
+/* Scroll to Top Button */
+#scrollTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: var(--secondary-color);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+#scrollTopBtn:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+    }
+
+    .main-nav a {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rubric-row {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        padding: 15px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="brand-container">
+                    <img src="https://raw.githubusercontent.com/code-corhuila/material-mineria-datos/b3725d694125ab35294ddfe415a327bc1445d32c/01-week/01-session/LOGO%20CORHUILA%20BLANCO%20PNG%20(2).png" alt="Logo Corhuila" style="height: 50px; width: auto;">
+                    <div>
+                        <div class="brand-name">INGENIERÍA DE SISTEMAS</div>
+                        <div style="font-size: 0.9em; margin-top: 5px;">Minería de Datos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a onclick="scrollToSection('proyectos')">📋 Proyectos</a></li>
+                <li><a onclick="scrollToSection('rubrica')">⭐ Rúbrica</a></li>
+                <li><a onclick="scrollToSection('recursos')">📚 Recursos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero-section" id="hero">
+                <h1>🚀 16 Proyectos ETL, Dashboard y Machine Learning</h1>
+                <p class="lead">
+                    Aprende a implementar pipelines ETL completos usando APIs públicas, PostgreSQL, Streamlit, Docker y técnicas de Machine Learning. 
+                    Cada proyecto incluye todos los pasos: extracción, transformación, carga, visualización y análisis predictivo.
+                </p>
+            </section>
+
+            <hr class="divider-thick">
+
+            <!-- Proyectos Section -->
+            <section id="proyectos">
+                <h2>📋 Proyectos por Grupo</h2>
+                
+                <div class="reflection-box">
+                    <h4>💡 Estructura de cada proyecto</h4>
+                    <p>
+                        Cada grupo debe completar los siguientes pasos en orden:
+                    </p>
+                    <ol>
+                        <li><strong>ETL Extractor:</strong> Extraer datos de la API pública</li>
+                        <li><strong>PostgreSQL:</strong> Diseñar e implementar la base de datos</li>
+                        <li><strong>Dashboard Streamlit:</strong> Crear visualizaciones interactivas</li>
+                        <li><strong>Containerización Docker:</strong> Empaquetar la solución</li>
+                        <li><strong>Machine Learning:</strong> Análisis predictivo con Jupyter</li>
+                    </ol>
+                </div>
+
+                <hr class="divider">
+
+                <!-- Proyecto 1 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">1</div>
+                        <div>
+                            <h3>Análisis Climático Global</h3>
+                            <span class="api-tag">🌍 OpenWeatherMap API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Construye un sistema ETL para monitorear datos climáticos en tiempo real de múltiples ciudades del mundo. 
+                            Analiza patrones de temperatura, humedad y velocidad del viento utilizando técnicas de regresión lineal.
+                        </p>
+
+                        <div class="api-link">
+                            <strong>API:</strong> <a href="https://openweathermap.org/api" target="_blank">https://openweathermap.org/api</a>
+                        </div>
+
+                        <div class="deliverables">
+                            <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                            <ol>
+                                <li><strong>Extractor ETL:</strong> Script Python que consume OpenWeatherMap API cada 30 minutos</li>
+                                <li><strong>BD PostgreSQL:</strong> Base de datos con tablas para ciudades, registros de clima y métricas</li>
+                                <li><strong>Dashboard Streamlit:</strong> 3+ visualizaciones (líneas de temperatura, mapa de humedad, gráficos interactivos)</li>
+                                <li><strong>Docker Compose:</strong> Contenedores para PostgreSQL, extractor y dashboard</li>
+                                <li><strong>ML Jupyter:</strong> Modelo de regresión para predecir temperatura basada en humedad y viento</li>
+                                <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">2</div>
+                        <div>
+                            <h3>Análisis de Criptomonedas</h3>
+                            <span class="api-tag">💰 CoinGecko API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                        Desarrolla un ETL que recopile datos históricos y en tiempo real de múltiples criptomonedas. 
+                        Crea un dashboard interactivo con análisis técnico y construye un modelo predictivo para variaciones de precios.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://www.coingecko.com/es/api" target="_blank">https://www.coingecko.com/es/api</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene datos de 10+ criptomonedas cada 15 minutos</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para criptomonedas, precios históricos y mercados</li>
+                            <li><strong>Dashboard Streamlit:</strong> Gráficos de precios, comparativas 24h, análisis de volatilidad</li>
+                            <li><strong>Docker Compose:</strong> Contenedores para base de datos, ETL y dashboard</li>
+                            <li><strong>ML Jupyter:</strong> Modelo ARIMA o Prophet para predicción de precios futuros</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">3</div>
+                        <div>
+                            <h3>Exploración de Datos Espaciales</h3>
+                            <span class="api-tag">🚀 SpaceX API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                        Ingiere y analiza datos públicos de SpaceX incluyendo lanzamientos, cohetes y destinos. 
+                        Visualiza información histórica y predice futuros lanzamientos basándote en patrones históricos.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://docs.spacexdata.com/" target="_blank">https://docs.spacexdata.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene lanzamientos, cohetes e información de naves</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para lanzamientos, cohetes, destinos y organizaciones</li>
+                            <li><strong>Dashboard Streamlit:</strong> Línea de tiempo de lanzamientos, mapa de destinos, estadísticas</li>
+                            <li><strong>Docker Compose:</strong> Orquestación de servicios con healthcheck</li>
+                            <li><strong>ML Jupyter:</strong> Modelo de clasificación para predecir éxito/fallo de misiones</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 4 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">4</div>
+                        <div>
+                            <h3>Datos Astronómicos de NASA</h3>
+                            <span class="api-tag">🌌 NASA API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                        Accede a múltiples APIs de NASA para recopilar datos sobre asteroides, imágenes de la NASA, 
+                        información de planetas y fenómenos astronómicos. Crea un dashboard educativo e interactivo.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://api.nasa.gov/" target="_blank">https://api.nasa.gov/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Scripts para obtener datos de asteroides próximos y fenómenos astronómicos</li>
+                            <li><strong>BD PostgreSQL:</strong> Base de datos con catálogos de asteroides, imágenes y eventos</li>
+                            <li><strong>Dashboard Streamlit:</strong> Visualización de asteroides cercanos, línea de tiempo de descubrimientos</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con volúmenes para almacenar imágenes descargadas</li>
+                            <li><strong>ML Jupyter:</strong> Clustering de asteroides por características orbitales</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 5 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">5</div>
+                        <div>
+                            <h3>Base de Datos de Superhéroes</h3>
+                            <span class="api-tag">🦸 Superhero API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Accede a una base de datos completa de superhéroes con información de poderes, afiliaciones, biografías y estadísticas. 
+                            Analiza patrones de superpoderes, clasificación de fuerzas y predice características de nuevos superhéroes.
+                        </p>
+
+                        <div class="api-link">
+                            <strong>API:</strong> <a href="https://superheroapi.com/" target="_blank">https://superheroapi.com/</a>
+                        </div>
+
+                        <div class="deliverables">
+                            <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                            <ol>
+                                <li><strong>Extractor ETL:</strong> Script que obtiene 700+ superhéroes con sus poderes y estadísticas</li>
+                                <li><strong>BD PostgreSQL:</strong> Tablas para superhéroes, poderes, afiliaciones, editoriales y estadísticas</li>
+                                <li><strong>Dashboard Streamlit:</strong> Comparador de héroes, análisis de poderes, rankings por atributo</li>
+                                <li><strong>Docker Compose:</strong> Contenedores con cachés para optimizar búsquedas de superhéroes</li>
+                                <li><strong>ML Jupyter:</strong> Clustering de héroes por similitud de poderes, clasificación de fuerza general</li>
+                                <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 6 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">6</div>
+                        <div>
+                            <h3>Base de Datos de Películas</h3>
+                            <span class="api-tag">🎬 OMDb API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Construye un ETL que recopile información de películas de OMDb incluyendo calificaciones, géneros y actores. 
+                        Crea un sistema de recomendación y análisis de tendencias en cine.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://www.omdbapi.com/" target="_blank">https://www.omdbapi.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene 500+ películas con detalles completos</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para películas, actores, directores, géneros y calificaciones</li>
+                            <li><strong>Dashboard Streamlit:</strong> Filtros interactivos, análisis por género/año, top películas</li>
+                            <li><strong>Docker Compose:</strong> Orquestación completa con reintentos automáticos en ETL</li>
+                            <li><strong>ML Jupyter:</strong> Sistema de recomendación basado en similitud de contenido</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 7 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">7</div>
+                        <div>
+                            <h3>Catálogo de Videojuegos</h3>
+                            <span class="api-tag">🎮 IGDB API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Desarrolla un ETL que acceda a la base de datos de videojuegos de IGDB. 
+                        Analiza datos de juegos, desarrolladores, plataformas y crea predicciones sobre juegos populares.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://www.igdb.com/api" target="_blank">https://www.igdb.com/api</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene datos de 1000+ videojuegos con calificaciones</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para juegos, desarrolladores, plataformas y géneros</li>
+                            <li><strong>Dashboard Streamlit:</strong> Análisis de géneros populares, juegos mejor calificados, tendencias</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con manejo de errores y reintentos</li>
+                            <li><strong>ML Jupyter:</strong> Predicción de calificaciones basada en características del juego</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 8 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">8</div>
+                        <div>
+                            <h3>Indicadores Económicos de Colombia</h3>
+                            <span class="api-tag">🌍 World Bank API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Obtén indicadores económicos y demográficos de Colombia a través de la World Bank API. 
+                        Analiza tendencias de PIB, desempleo, educación, pobreza y compara Colombia con otros países latinoamericanos.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://data.worldbank.org/developers" target="_blank">https://data.worldbank.org/developers</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene +50 indicadores económicos de Colombia e histórico 20+ años</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para países, indicadores, años, valores y metadatos</li>
+                            <li><strong>Dashboard Streamlit:</strong> Gráficos de tendencias, comparativas regionales, análisis por sector</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con caché para optimizar consultas a la API</li>
+                            <li><strong>ML Jupyter:</strong> Predicción de indicadores económicos, clustering de países similares</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 9 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">9</div>
+                        <div>
+                            <h3>Atlas de Países y Territorios</h3>
+                            <span class="api-tag">🌐 REST Countries API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Obtén información completa sobre todos los países del mundo incluyendo población, área, PIB y datos geográficos. 
+                        Crea análisis comparativos entre naciones.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://restcountries.com/" target="_blank">https://restcountries.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene datos de ~250 países con información demográfica</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para países, capitales, regiones, lenguajes y monedas</li>
+                            <li><strong>Dashboard Streamlit:</strong> Mapas interactivos, comparativas por región, indicadores económicos</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con variables de ambiente para escalabilidad</li>
+                            <li><strong>ML Jupyter:</strong> Clustering de países por indicadores de desarrollo</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 10 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">10</div>
+                        <div>
+                            <h3>Catálogo de Anime y Manga</h3>
+                            <span class="api-tag">🎌 Jikan API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Accede a la base de datos más grande de anime y manga a través de Jikan (MyAnimeList API no oficial). 
+                        Analiza géneros, rankings y predice puntuaciones de anime.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://jikan.moe/" target="_blank">https://jikan.moe/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene información de 2000+ anime con temporadas</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para anime, estudios, géneros, temporadas y episodios</li>
+                            <li><strong>Dashboard Streamlit:</strong> Análisis de géneros populares, ranking temporal, trending</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con rate limiting para la API</li>
+                            <li><strong>ML Jupyter:</strong> Predicción de puntuación de anime basada en características</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 11 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">11</div>
+                        <div>
+                            <h3>Base de Datos Pokémon</h3>
+                            <span class="api-tag">⚡ PokéAPI</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Utiliza PokéAPI para crear una base de datos completa de Pokémon incluyendo estadísticas, tipos, movimientos y evoluciones. 
+                        Analiza balanceo de juegos y predice efectividad de combates.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://pokeapi.co/" target="_blank">https://pokeapi.co/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene 1000+ Pokémon con stats, movimientos y tipos</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para Pokémon, tipos, movimientos, habilidades y evoluciones</li>
+                            <li><strong>Dashboard Streamlit:</strong> Comparador de Pokémon, análisis por tipo, generador de equipos</li>
+                            <li><strong>Docker Compose:</strong> Orquestación con cachés para optimizar queries</li>
+                            <li><strong>ML Jupyter:</strong> Análisis de balanceo, predicción de tiposefectivos en combate</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 12 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">12</div>
+                        <div>
+                            <h3>Base de Datos de Los Simpsons</h3>
+                            <span class="api-tag">📺 The Simpsons API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Accede a la base de datos completa del universo de Los Simpsons con información sobre 1182+ personajes, 768+ episodios y 477+ locaciones. 
+                        Analiza patrones de datos de personajes, episodios y crea análisis de la evolución del show a través de temporadas.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://thesimpsonsapi.com/" target="_blank">https://thesimpsonsapi.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene 1182+ personajes con ocupaciones, frases y características</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para personajes, episodios, locaciones, temporadas y relaciones entre actores</li>
+                            <li><strong>Dashboard Streamlit:</strong> Catálogo de personajes interactivo, línea de tiempo de episodios, mapa de locaciones</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con búsqueda y filtros avanzados por personaje, episodio y temporada</li>
+                            <li><strong>ML Jupyter:</strong> Análisis de frases icónicas, clustering de personajes por rol, predicción de popularidad</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 13 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">13</div>
+                        <div>
+                            <h3>Análisis de Tasas de Cambio</h3>
+                            <span class="api-tag">💱 Exchange Rate API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Monitorea tasas de cambio de múltiples monedas en tiempo real. 
+                        Crea alertas automáticas y predice fluctuaciones del mercado forex.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://exchangerate-api.com/" target="_blank">https://exchangerate-api.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene tasas de 150+ monedas cada hora</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para monedas, tasas históricas y conversiones</li>
+                            <li><strong>Dashboard Streamlit:</strong> Convertidor interactivo, gráficos históricos, alertas de cambio</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con cron jobs para actualizaciones periódicas</li>
+                            <li><strong>ML Jupyter:</strong> Modelo ARIMA para predicción de tasas futuros</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 14 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">14</div>
+                        <div>
+                            <h3>Blog de Usuarios Sintéticos</h3>
+                            <span class="api-tag">📝 JSONPlaceholder API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Utiliza JSONPlaceholder para crear un ETL con posts, comentarios y datos de usuarios. 
+                        Analiza engagement y crea recomendaciones de contenido.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://jsonplaceholder.typicode.com/" target="_blank">https://jsonplaceholder.typicode.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene usuarios, posts, comentarios y álbumes</li>
+                            <li><strong>BD PostgreSQL:</strong> Base de datos modelada para redes sociales/blog</li>
+                            <li><strong>Dashboard Streamlit:</strong> Análisis de engagement, posts populares, red de usuarios</li>
+                            <li><strong>Docker Compose:</strong> Orquestación con índices optimizados en BD</li>
+                            <li><strong>ML Jupyter:</strong> Sistema de recomendación de posts, detección de comunidades</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 15 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">15</div>
+                        <div>
+                            <h3>Análisis de Suscriptores YouTube</h3>
+                            <span class="api-tag">▶️ YouTube Data API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Analiza canales de YouTube populares, estadísticas de videos y patrones de crecimiento. 
+                        Predice tendencias de contenido y popularidad de videos.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://developers.google.com/youtube/v3" target="_blank">https://developers.google.com/youtube/v3</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene datos de 20+ canales populares con videos</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para canales, videos, comentarios y métricas de engagement</li>
+                            <li><strong>Dashboard Streamlit:</strong> Análisis de crecimiento, videos trending, evolución de views</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con rate limiting para la API</li>
+                            <li><strong>ML Jupyter:</strong> Predicción de views, análisis de sentimiento en comentarios</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 16 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">16</div>
+                        <div>
+                            <h3>Análisis del Universo Rick and Morty</h3>
+                            <span class="api-tag">👽 Rick and Morty API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Accede a la base de datos completa de la serie Rick and Morty con información sobre personajes, episodios y locaciones del multiverso. 
+                        Analiza patrones de personajes y predice características del universo.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://rickandmortyapi.com/" target="_blank">https://rickandmortyapi.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene 600+ personajes, 50+ episodios y locaciones del multiverso</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para personajes, episodios, locaciones, dimensiones y relaciones</li>
+                            <li><strong>Dashboard Streamlit:</strong> Catálogo interactivo de personajes, mapa de dimensiones, análisis de episodios</li>
+                            <li><strong>Docker Compose:</strong> Orquestación de contenedores con búsqueda avanzada y filtros</li>
+                            <li><strong>ML Jupyter:</strong> Análisis de redes de personajes, clustering por especie, predicción de apariciones</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <hr class="divider-thick">
+
+            <!-- Rúbrica Section -->
+            <section id="rubrica">
+                <h2>⭐ Rúbrica de Evaluación</h2>
+
+                <p class="lead">
+                    Cada proyecto será evaluado en base a los siguientes criterios. El proyecto debe completar todos los 5 pasos 
+                    con calidad demostrable en cada componente.
+                </p>
+
+                <div class="rubric-container">
+                    <div class="rubric-header">
+                        <h3>Criterios de Evaluación - Escala Institucional Colombiana</h3>
+                    </div>
+
+                    <!-- Criterio 1: ETL Extractor -->
+                    <div class="rubric-criteria">
+                        <div class="criteria-title">
+                            <i class="fas fa-download"></i> 1. Extractor ETL
+                        </div>
+                        <div class="criteria-content">
+                            <div class="rubric-row">
+                                <div class="rubric-cell excellent">
+                                    <h4>Cumple Plenamente</h4>
+                                    <p><strong>4.7 - 5.0 | 94 - 100%</strong><br>El estudiante logró alcanzar los resultados de aprendizaje plenamente y su calidad académica es destacada. Su desempeño refleja un compromiso excepcional con su proceso formativo.</p>
+                                </div>
+                                <div class="rubric-cell good">
+                                    <h4>Cumple en Alto Grado</h4>
+                                    <p><strong>4.2 - 4.6 | 84 - 93%</strong><br>El estudiante alcanzó los resultados de aprendizaje en alto grado. Su desempeño muestra un alto nivel de calidad y sólido compromiso con su proceso formativo.</p>
+                                </div>
+                                <div class="rubric-cell fair">
+                                    <h4>Cumple Satisfactoriamente</h4>
+                                    <p><strong>3.6 - 4.1 | 72 - 83%</strong><br>El estudiante alcanzó los resultados de aprendizaje esperados de forma satisfactoria. Su desempeño es bueno y evidencia compromiso con su proceso formativo.</p>
+                                </div>
+                                <div class="rubric-cell poor">
+                                    <h4>Cumple Aceptablemente / Insuficiente</h4>
+                                    <p><strong>0.0 - 3.5 | 0 - 71%</strong><br>El estudiante logró los resultados mínimos esperados o no alcanzó los resultados de aprendizaje esperados. Su desempeño refleja deficiencias en el proceso de aprendizaje.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Criterio 2: Base de Datos PostgreSQL -->
+                    <div class="rubric-criteria">
+                        <div class="criteria-title">
+                            <i class="fas fa-database"></i> 2. Base de Datos PostgreSQL
+                        </div>
+                        <div class="criteria-content">
+                            <div class="rubric-row">
+                                <div class="rubric-cell excellent">
+                                    <h4>Cumple Plenamente</h4>
+                                    <p><strong>4.7 - 5.0 | 94 - 100%</strong><br>Diseño normalizado (3FN+), constraints, triggers, índices optimizados, migraciones con Alembic, integridad de datos garantizada y arquitectura escalable.</p>
+                                </div>
+                                <div class="rubric-cell good">
+                                    <h4>Cumple en Alto Grado</h4>
+                                    <p><strong>4.2 - 4.6 | 84 - 93%</strong><br>Diseño normalizado (2FN), llaves foráneas correctas, algunos índices, migraciones básicas implementadas y pocas anomalías en los datos.</p>
+                                </div>
+                                <div class="rubric-cell fair">
+                                    <h4>Cumple Satisfactoriamente</h4>
+                                    <p><strong>3.6 - 4.1 | 72 - 83%</strong><br>Diseño sin normalización completa, relaciones incompletas, sin índices relevantes, migraciones parciales y algo de redundancia de datos.</p>
+                                </div>
+                                <div class="rubric-cell poor">
+                                    <h4>Cumple Aceptablemente / Insuficiente</h4>
+                                    <p><strong>0.0 - 3.5 | 0 - 71%</strong><br>Diseño deficiente, pérdida potencial de datos, relaciones faltantes, performance muy baja y datos desorganizados.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Criterio 3: Dashboard Streamlit -->
+                    <div class="rubric-criteria">
+                        <div class="criteria-title">
+                            <i class="fas fa-chart-bar"></i> 3. Dashboard Streamlit
+                        </div>
+                        <div class="criteria-content">
+                            <div class="rubric-row">
+                                <div class="rubric-cell excellent">
+                                    <h4>Cumple Plenamente</h4>
+                                    <p><strong>4.7 - 5.0 | 94 - 100%</strong><br>5+ visualizaciones interactivas, filtros y selectores funcionales, diseño profesional, carga eficiente de datos, uso avanzado de Plotly, responsivo y documentado.</p>
+                                </div>
+                                <div class="rubric-cell good">
+                                    <h4>Cumple en Alto Grado</h4>
+                                    <p><strong>4.2 - 4.6 | 84 - 93%</strong><br>3-4 visualizaciones, filtros básicos implementados, diseño ordenado, carga normal de datos, gráficos claros y funcionales.</p>
+                                </div>
+                                <div class="rubric-cell fair">
+                                    <h4>Cumple Satisfactoriamente</h4>
+                                    <p><strong>3.6 - 4.1 | 72 - 83%</strong><br>2-3 visualizaciones, pocas interacciones, diseño básico, algo lento en carga, falta información y mejoras visuales.</p>
+                                </div>
+                                <div class="rubric-cell poor">
+                                    <h4>Cumple Aceptablemente / Insuficiente</h4>
+                                    <p><strong>0.0 - 3.5 | 0 - 71%</strong><br>Una visualización o menos, no es interactivo, muy lento, errores frecuentes y poco profesional.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Criterio 4: Docker y Containerización -->
+                    <div class="rubric-criteria">
+                        <div class="criteria-title">
+                            <i class="fas fa-cube"></i> 4. Docker y Containerización
+                        </div>
+                        <div class="criteria-content">
+                            <div class="rubric-row">
+                                <div class="rubric-cell excellent">
+                                    <h4>Cumple Plenamente</h4>
+                                    <p><strong>4.7 - 5.0 | 94 - 100%</strong><br>Docker Compose completo, múltiples servicios orquestados, volúmenes y redes configurados, health checks implementados.</p>
+                                </div>
+                                <div class="rubric-cell good">
+                                    <h4>Cumple en Alto Grado</h4>
+                                    <p><strong>4.2 - 4.6 | 84 - 93%</strong><br>Docker Compose funcional, 2-3 servicios bien configurados, volúmenes implementados, sin health checks pero funciona correctamente.</p>
+                                </div>
+                                <div class="rubric-cell fair">
+                                    <h4>Cumple Satisfactoriamente</h4>
+                                    <p><strong>3.6 - 4.1 | 72 - 83%</strong><br>Dockerfile básico, orquestación parcial, algunos volúmenes, problemas ocasionales, documentación mínima.</p>
+                                </div>
+                                <div class="rubric-cell poor">
+                                    <h4>Cumple Aceptablemente / Insuficiente</h4>
+                                    <p><strong>0.0 - 3.5 | 0 - 71%</strong><br>Dockerfile incompleto o deficiente, no funciona, errores frecuentes, sin docker-compose implementado.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Criterio 5: Machine Learning - Presentación PPT -->
+                    <div class="rubric-criteria">
+                        <div class="criteria-title">
+                            <i class="fas fa-brain"></i> 5. Machine Learning y Presentación PPT
+                        </div>
+                        <div class="criteria-content">
+                            <div class="rubric-row">
+                                <div class="rubric-cell excellent">
+                                    <h4>Cumple Plenamente</h4>
+                                    <p><strong>4.7 - 5.0 | 94 - 100%</strong><br>Modelo entrenado con métricas complejas (Regresión: R², MAE, RMSE; Clasificación: Precisión, Recall, F1-Score, AUC-ROC, Matriz de Confusión), validación cruzada, visualizaciones de diagnóstico. Presentación PPT completa con: problema claro, alcance definido, pregunta de investigación, herramientas documentadas, arquitectura de datos, modelos explicados, métricas detalladas, resultados concretos y recomendaciones fundamentadas.</p>
+                                </div>
+                                <div class="rubric-cell good">
+                                    <h4>Cumple en Alto Grado</h4>
+                                    <p><strong>4.2 - 4.6 | 84 - 93%</strong><br>Modelo funcional con algunas métricas, división train/test correcta, gráficos básicos. PPT incluye la mayoría de elementos: problema, alcance, pregunta, herramientas, arquitectura básica, modelos, métricas y resultados con pocas recomendaciones.</p>
+                                </div>
+                                <div class="rubric-cell fair">
+                                    <h4>Cumple Satisfactoriamente</h4>
+                                    <p><strong>3.6 - 4.1 | 72 - 83%</strong><br>Modelo simple, pocas métricas, validación mínima. PPT con elementos básicos: problema identificado, alcance simple, pregunta de investigación simple, herramientas listadas, arquitectura incompleta, modelos poco explicados.</p>
+                                </div>
+                                <div class="rubric-cell poor">
+                                    <h4>Cumple Aceptablemente / Insuficiente</h4>
+                                    <p><strong>0.0 - 3.5 | 0 - 71%</strong><br>Sin modelo o código deficiente, resultados incorrectos. PPT incompleto, falta varios elementos solicitados (problema, pregunta de investigación, arquitectura, métricas, recomendaciones).</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="reflection-box" style="margin-top: 30px;">
+                    <h4>📌 Elementos Obligatorios de la Presentación PPT</h4>
+                    <p>Cada grupo debe incluir en su presentación:</p>
+                    <ol>
+                        <li><strong>Problema Identificado:</strong> Descripción clara del problema a resolver</li>
+                        <li><strong>Alcance del Proyecto:</strong> Límites y objetivos específicos</li>
+                        <li><strong>Pregunta de Investigación:</strong> Pregunta central que guía el análisis</li>
+                        <li><strong>Herramientas Utilizadas:</strong> API, librerías, tecnologías empleadas</li>
+                        <li><strong>Arquitectura de Datos:</strong> Diagrama de flujo: Extracción → Transformación → Carga</li>
+                        <li><strong>Modelos Machine Learning:</strong> Descripción de modelos implementados</li>
+                        <li><strong>Métricas de Evaluación:</strong> Métricas utilizadas y su interpretación</li>
+                        <li><strong>Resultados Obtenidos:</strong> Hallazgos principales con visualizaciones</li>
+                        <li><strong>Recomendaciones:</strong> Conclusiones y mejoras futuras</li>
+                    </ol>
+                </div>
+
+                <div class="success-box" style="margin-top: 30px;">
+                    <h4>📊 Conversión de Escala a Calificación Numérica</h4>
+                    <ul style="margin: 0; margin-left: 20px;">
+                        <li><strong>Cumple Plenamente (4.7-5.0) | 94-100%:</strong> Desempeño excepcional</li>
+                        <li><strong>Cumple en Alto Grado (4.2-4.6) | 84-93%:</strong> Desempeño muy bueno</li>
+                        <li><strong>Cumple Satisfactoriamente (3.6-4.1) | 72-83%:</strong> Desempeño bueno</li>
+                        <li><strong>Cumple Aceptablemente (3.0-3.5) | 60-71%:</strong> Desempeño aceptable</li>
+                        <li><strong>Insuficiente (0.0-2.9) | 0-59%:</strong> Desempeño deficiente</li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <hr class="divider-thick">
+
+            <!-- Recursos Section -->
+            <section id="recursos">
+                <h2>📚 Recursos y Enlaces Útiles</h2>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <h4>🐍 Python</h4>
+                        <p>Documentación oficial de Python, guías de mejores prácticas y librerías recomendadas para ciencia de datos.</p>
+                        <a href="https://www.python.org/" target="_blank">Visitar →</a>
+                    </div>
+
+                    <div class="card">
+                        <h4>🐘 PostgreSQL</h4>
+                        <p>Base de datos relacional empresarial con soporte para datos complejos y transacciones ACID garantizadas.</p>
+                        <a href="https://www.postgresql.org/" target="_blank">Visitar →</a>
+                    </div>
+
+                    <div class="card">
+                        <h4>⚡ Streamlit</h4>
+                        <p>Framework para crear aplicaciones de datos interactivas en Python sin necesidad de frontend.</p>
+                        <a href="https://streamlit.io/" target="_blank">Visitar →</a>
+                    </div>
+
+                    <div class="card">
+                        <h4>🐳 Docker</h4>
+                        <p>Plataforma de containerización para empaquetar aplicaciones con sus dependencias.</p>
+                        <a href="https://www.docker.com/" target="_blank">Visitar →</a>
+                    </div>
+
+                    <div class="card">
+                        <h4>📊 Scikit-learn</h4>
+                        <p>Librería de machine learning con algoritmos para clasificación, regresión y clustering.</p>
+                        <a href="https://scikit-learn.org/" target="_blank">Visitar →</a>
+                    </div>
+
+                    <div class="card">
+                        <h4>📈 Plotly</h4>
+                        <p>Librería para crear gráficas interactivas y dashboards visuales de alta calidad.</p>
+                        <a href="https://plotly.com/" target="_blank">Visitar →</a>
+                    </div>
+                </div>
+
+                <div class="reflection-box" style="margin-top: 40px;">
+                    <h4>⏰ Cronograma Sugerido</h4>
+                    <ul>
+                        <li><strong>Semana 1:</strong> Estudio de la API, diseño del ETL</li>
+                        <li><strong>Semana 2:</strong> Implementar Extractor y Base de Datos</li>
+                        <li><strong>Semana 3:</strong> Desarrollo del Dashboard Streamlit</li>
+                        <li><strong>Semana 4:</strong> Containerización con Docker</li>
+                        <li><strong>Semana 5:</strong> Análisis ML y optimizaciones finales</li>
+                    </ul>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="topFunction()" id="scrollTopBtn" title="Ir al inicio">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Scroll behavior
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                scrollBtn.style.display = 'block';
+            } else {
+                scrollBtn.style.display = 'none';
+            }
+        });
+
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        // Smooth scroll to sections
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Copy code to clipboard
+        document.querySelectorAll('pre').forEach(pre => {
+            const button = document.createElement('button');
+            button.className = 'copy-button';
+            button.innerHTML = '<i class="fas fa-copy"></i>';
+            button.style.cssText = `
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                background-color: #ff6b6b;
+                color: white;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+                opacity: 0;
+                transition: opacity 0.3s;
+            `;
+
+            pre.style.position = 'relative';
+            pre.appendChild(button);
+
+            pre.addEventListener('mouseenter', () => {
+                button.style.opacity = '1';
+            });
+
+            pre.addEventListener('mouseleave', () => {
+                button.style.opacity = '0';
+            });
+
+            button.addEventListener('click', () => {
+                const code = pre.querySelector('code').innerText;
+                navigator.clipboard.writeText(code);
+                button.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    button.innerHTML = '<i class="fas fa-copy"></i>';
+                }, 2000);
+            });
+        });
+
+        // Highlight active section
+        function highlightActiveSection() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.main-nav a');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (pageYOffset >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('onclick') && link.getAttribute('onclick').includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        }
+
+        highlightActiveSection();
+
+        // Accordion functionality for project cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            projectCards.forEach(card => {
+                const title = card.querySelector('.project-title');
+                
+                title.addEventListener('click', function(e) {
+                    // Si el clic es en un enlace, no expandir el acordeón
+                    if (e.target.closest('a')) return;
+                    
+                    // Cerrar otros proyectos abiertos
+                    projectCards.forEach(otherCard => {
+                        if (otherCard !== card && otherCard.classList.contains('active')) {
+                            otherCard.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle el proyecto actual
+                    card.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; margin-top: 60px;">
+        <p style="margin: 0; font-size: 14px;">© 2025 Ingeniería de Sistemas - Minería de Datos. Todos los derechos reservados.</p>
+        <p style="margin-top: 15px; font-size: 16px; font-weight: 500;">Creado por <strong>Ing. Julian Andres Quimbayo Castro</strong></p>
+    </footer>
+</body>
+</html>

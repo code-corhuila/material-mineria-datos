@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto 1: Análisis Climático Global</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="brand-container">
+                    <div>
+                        <div class="brand-name">INGENIERÍA DE SISTEMAS</div>
+                        <div style="font-size: 0.9em; margin-top: 5px;">Minería de Datos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="project-card active">
+                <div class="project-title">
+                    <div class="project-number">1</div>
+                    <div>
+                        <h3>Análisis Climático Global</h3>
+                        <span class="api-tag">🌍 OpenWeatherMap API</span>
+                    </div>
+                </div>
+
+                <div class="project-content">
+                    <p class="description">
+                        Construye un sistema ETL para monitorear datos climáticos en tiempo real de múltiples ciudades del mundo. 
+                        Analiza patrones de temperatura, humedad y velocidad del viento utilizando técnicas de regresión lineal.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://openweathermap.org/api" target="_blank">https://openweathermap.org/api</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script Python que obtiene datos de 10+ ciudades cada hora</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para ciudades, mediciones y alertas climáticas</li>
+                            <li><strong>Dashboard Streamlit:</strong> Mapas interactivos, gráficos de tendencias, pronósticos</li>
+                            <li><strong>Docker Compose:</strong> Servicios orquestados con PostgreSQL, scheduler y dashboard</li>
+                            <li><strong>ML Jupyter:</strong> Regresión lineal para predicción de variaciones de temperatura</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+
+                    <div class="reflection-box">
+                        <h4>💡 Sugerencias de Análisis</h4>
+                        <ul style="margin-left: 20px;">
+                            <li>Detectar anomalías climáticas por ciudad</li>
+                            <li>Comparar patrones estacionales</li>
+                            <li>Predecir temperatura máxima y mínima</li>
+                            <li>Analizar correlación entre variables climáticas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="divider-thick">
+
+            <section style="text-align: center; margin-top: 40px;">
+                <a href="intro.html" style="display: inline-block; padding: 10px 20px; background: #2a5298; color: white; text-decoration: none; border-radius: 5px; margin-right: 10px;">← Volver a Introducción</a>
+                <a href="proyecto-02.html" style="display: inline-block; padding: 10px 20px; background: #ff6b6b; color: white; text-decoration: none; border-radius: 5px;">Siguiente Proyecto →</a>
+            </section>
+        </div>
+    </main>
+
+    <footer style="text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; margin-top: 60px;">
+        <p style="margin: 0; font-size: 14px;">© 2025 Ingeniería de Sistemas - Minería de Datos. Todos los derechos reservados.</p>
+        <p style="margin-top: 15px; font-size: 16px; font-weight: 500;">Creado por <strong>Ing. Julian Andres Quimbayo Castro</strong></p>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+</body>
+</html>

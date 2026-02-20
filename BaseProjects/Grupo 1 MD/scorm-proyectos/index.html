@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos ETL, Dashboard y ML | Minería de Datos | Ingeniería de Sistemas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="top-bar">
+            <div class="container">
+                <div class="brand-container">
+                    <img src="assets/logo-corhuila.png" alt="Logo Corhuila" style="height: 50px; width: auto;">
+                    <div>
+                        <div class="brand-name">INGENIERÍA DE SISTEMAS</div>
+                        <div style="font-size: 0.9em; margin-top: 5px;">Minería de Datos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-nav">
+            <ul>
+                <li><a onclick="scrollToSection('proyectos')">📋 Proyectos</a></li>
+                <li><a onclick="scrollToSection('rubrica')">⭐ Rúbrica</a></li>
+                <li><a onclick="scrollToSection('recursos')">📚 Recursos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero-section" id="hero">
+                <h1>🚀 15 Proyectos ETL, Dashboard y Machine Learning</h1>
+                <p class="lead">
+                    Aprende a implementar pipelines ETL completos usando APIs públicas, PostgreSQL, Streamlit, Docker y técnicas de Machine Learning. 
+                    Cada proyecto incluye todos los pasos: extracción, transformación, carga, visualización y análisis predictivo.
+                </p>
+            </section>
+
+            <hr class="divider-thick">
+
+            <!-- Proyectos Section -->
+            <section id="proyectos">
+                <h2>📋 Proyectos por Grupo</h2>
+                
+                <div class="reflection-box">
+                    <h4>💡 Estructura de cada proyecto</h4>
+                    <p>
+                        Cada grupo debe completar los siguientes pasos en orden:
+                    </p>
+                    <ol>
+                        <li><strong>ETL Extractor:</strong> Extraer datos de la API pública</li>
+                        <li><strong>PostgreSQL:</strong> Diseñar e implementar la base de datos</li>
+                        <li><strong>Dashboard Streamlit:</strong> Crear visualizaciones interactivas</li>
+                        <li><strong>Containerización Docker:</strong> Empaquetar la solución</li>
+                        <li><strong>Machine Learning:</strong> Análisis predictivo con Jupyter</li>
+                    </ol>
+                </div>
+
+                <hr class="divider">
+
+                <!-- Proyecto 1 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">1</div>
+                        <div>
+                            <h3>Análisis Climático Global</h3>
+                            <span class="api-tag">🌍 OpenWeatherMap API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Construye un sistema ETL para monitorear datos climáticos en tiempo real de múltiples ciudades del mundo. 
+                            Analiza patrones de temperatura, humedad y velocidad del viento utilizando técnicas de regresión lineal.
+                        </p>
+
+                        <div class="api-link">
+                            <strong>API:</strong> <a href="https://openweathermap.org/api" target="_blank">https://openweathermap.org/api</a>
+                        </div>
+
+                        <div class="deliverables">
+                            <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                            <ol>
+                                <li><strong>Extractor ETL:</strong> Script Python que obtiene datos de 10+ ciudades cada hora</li>
+                                <li><strong>BD PostgreSQL:</strong> Tablas para ciudades, mediciones y alertas climáticas</li>
+                                <li><strong>Dashboard Streamlit:</strong> Mapas interactivos, gráficos de tendencias, pronósticos</li>
+                                <li><strong>Docker Compose:</strong> Servicios orquestados con PostgreSQL, scheduler y dashboard</li>
+                                <li><strong>ML Jupyter:</strong> Regresión lineal para predicción de variaciones de temperatura</li>
+                                <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">2</div>
+                        <div>
+                            <h3>Análisis de Criptomonedas</h3>
+                            <span class="api-tag">💰 CoinGecko API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                        Desarrolla un ETL que recopile datos históricos y en tiempo real de múltiples criptomonedas. 
+                        Crea un dashboard interactivo con análisis técnico y construye un modelo predictivo para variaciones de precios.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://www.coingecko.com/es/api" target="_blank">https://www.coingecko.com/es/api</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene datos de 10+ criptomonedas cada 15 minutos</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para criptomonedas, precios históricos y mercados</li>
+                            <li><strong>Dashboard Streamlit:</strong> Gráficos de precios, comparativas 24h, análisis de volatilidad</li>
+                            <li><strong>Docker Compose:</strong> Contenedores para base de datos, ETL y dashboard</li>
+                            <li><strong>ML Jupyter:</strong> Modelo ARIMA o Prophet para predicción de precios futuros</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">3</div>
+                        <div>
+                            <h3>Exploración de Datos Espaciales</h3>
+                            <span class="api-tag">🚀 SpaceX API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                        Ingiere y analiza datos públicos de SpaceX incluyendo lanzamientos, cohetes y destinos. 
+                        Visualiza información histórica y predice futuros lanzamientos basándote en patrones históricos.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://docs.spacexdata.com/" target="_blank">https://docs.spacexdata.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene lanzamientos, cohetes e información de naves</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para lanzamientos, cohetes, destinos y organizaciones</li>
+                            <li><strong>Dashboard Streamlit:</strong> Línea de tiempo de lanzamientos, mapa de destinos, estadísticas</li>
+                            <li><strong>Docker Compose:</strong> Orquestación de servicios con healthcheck</li>
+                            <li><strong>ML Jupyter:</strong> Modelo de clasificación para predecir éxito/fallo de misiones</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 4 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">4</div>
+                        <div>
+                            <h3>Datos Astronómicos de NASA</h3>
+                            <span class="api-tag">🌌 NASA API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                        Accede a múltiples APIs de NASA para recopilar datos sobre asteroides, imágenes de la NASA, 
+                        información de planetas y fenómenos astronómicos. Crea un dashboard educativo e interactivo.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://api.nasa.gov/" target="_blank">https://api.nasa.gov/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Scripts para obtener datos de asteroides próximos y fenómenos astronómicos</li>
+                            <li><strong>BD PostgreSQL:</strong> Base de datos con catálogos de asteroides, imágenes y eventos</li>
+                            <li><strong>Dashboard Streamlit:</strong> Visualización de asteroides cercanos, línea de tiempo de descubrimientos</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con volúmenes para almacenar imágenes descargadas</li>
+                            <li><strong>ML Jupyter:</strong> Clustering de asteroides por características orbitales</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 5 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">5</div>
+                        <div>
+                            <h3>Base de Datos de Superhéroes</h3>
+                            <span class="api-tag">🦸 Superhero API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Accede a una base de datos completa de superhéroes con información de poderes, afiliaciones, biografías y estadísticas. 
+                            Analiza patrones de superpoderes, clasificación de fuerzas y predice características de nuevos superhéroes.
+                        </p>
+
+                        <div class="api-link">
+                            <strong>API:</strong> <a href="https://superheroapi.com/" target="_blank">https://superheroapi.com/</a>
+                        </div>
+
+                        <div class="deliverables">
+                            <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                            <ol>
+                                <li><strong>Extractor ETL:</strong> Script que extrae 700+ superhéroes con poderes y afiliaciones</li>
+                                <li><strong>BD PostgreSQL:</strong> Tablas para superhéroes, poderes, afiliaciones, editoriales y estadísticas</li>
+                                <li><strong>Dashboard Streamlit:</strong> Comparador interactivo, análisis de poderes, ranking de fortaleza</li>
+                                <li><strong>Docker Compose:</strong> Orquestación con caché inteligente para optimizar llamadas API</li>
+                                <li><strong>ML Jupyter:</strong> Clustering de similitud entre poderes, clasificación de fortaleza general</li>
+                                <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 6 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">6</div>
+                        <div>
+                            <h3>Base de Datos de Películas</h3>
+                            <span class="api-tag">🎬 OMDb API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Construye un ETL que recopile información de películas de OMDb incluyendo calificaciones, géneros y actores. 
+                        Crea un sistema de recomendación y análisis de tendencias en cine.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://www.omdbapi.com/" target="_blank">https://www.omdbapi.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene 500+ películas con detalles completos</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para películas, actores, directores, géneros y calificaciones</li>
+                            <li><strong>Dashboard Streamlit:</strong> Filtros interactivos, análisis por género/año, top películas</li>
+                            <li><strong>Docker Compose:</strong> Orquestación completa con reintentos automáticos en ETL</li>
+                            <li><strong>ML Jupyter:</strong> Sistema de recomendación basado en similitud de contenido</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 7 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">7</div>
+                        <div>
+                            <h3>Catálogo de Videojuegos</h3>
+                            <span class="api-tag">🎮 IGDB API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Desarrolla un ETL que acceda a la base de datos de videojuegos de IGDB. 
+                        Analiza datos de juegos, desarrolladores, plataformas y crea predicciones sobre juegos populares.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://www.igdb.com/api" target="_blank">https://www.igdb.com/api</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene datos de 1000+ videojuegos con calificaciones</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para juegos, desarrolladores, plataformas y géneros</li>
+                            <li><strong>Dashboard Streamlit:</strong> Análisis de géneros populares, juegos mejor calificados, tendencias</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con manejo de errores y reintentos</li>
+                            <li><strong>ML Jupyter:</strong> Predicción de calificaciones basada en características del juego</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 8 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">8</div>
+                        <div>
+                            <h3>Indicadores Económicos de Colombia</h3>
+                            <span class="api-tag">🌍 World Bank API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Obtén indicadores económicos y demográficos de Colombia a través de la World Bank API. 
+                        Analiza tendencias de PIB, desempleo, educación, pobreza y compara Colombia con otros países latinoamericanos.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://data.worldbank.org/developers" target="_blank">https://data.worldbank.org/developers</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene +50 indicadores económicos de Colombia e histórico 20+ años</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para países, indicadores, años, valores y metadatos</li>
+                            <li><strong>Dashboard Streamlit:</strong> Gráficos de tendencias, comparativas regionales, análisis por sector</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con caché para optimizar consultas a la API</li>
+                            <li><strong>ML Jupyter:</strong> Predicción de indicadores económicos, clustering de países similares</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 9 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">9</div>
+                        <div>
+                            <h3>Atlas de Países y Territorios</h3>
+                            <span class="api-tag">🌐 REST Countries API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Obtén información completa sobre todos los países del mundo incluyendo población, área, PIB y datos geográficos. 
+                        Crea análisis comparativos entre naciones.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://restcountries.com/" target="_blank">https://restcountries.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene datos de ~250 países con información demográfica</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para países, capitales, regiones, lenguajes y monedas</li>
+                            <li><strong>Dashboard Streamlit:</strong> Mapas interactivos, comparativas por región, indicadores económicos</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con variables de ambiente para escalabilidad</li>
+                            <li><strong>ML Jupyter:</strong> Clustering de países por indicadores de desarrollo</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 10 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">10</div>
+                        <div>
+                            <h3>Catálogo de Anime y Manga</h3>
+                            <span class="api-tag">🎌 Jikan API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Accede a la base de datos más grande de anime y manga a través de Jikan (MyAnimeList API no oficial). 
+                        Analiza géneros, rankings y predice puntuaciones de anime.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://jikan.moe/" target="_blank">https://jikan.moe/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene información de 2000+ anime con temporadas</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para anime, estudios, géneros, temporadas y episodios</li>
+                            <li><strong>Dashboard Streamlit:</strong> Análisis de géneros populares, ranking temporal, trending</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con rate limiting para la API</li>
+                            <li><strong>ML Jupyter:</strong> Predicción de puntuación de anime basada en características</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 11 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">11</div>
+                        <div>
+                            <h3>Base de Datos Pokémon</h3>
+                            <span class="api-tag">⚡ PokéAPI</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Utiliza PokéAPI para crear una base de datos completa de Pokémon incluyendo estadísticas, tipos, movimientos y evoluciones. 
+                        Analiza balanceo de juegos y predice efectividad de combates.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://pokeapi.co/" target="_blank">https://pokeapi.co/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene 1000+ Pokémon con stats, movimientos y tipos</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para Pokémon, tipos, movimientos, habilidades y evoluciones</li>
+                            <li><strong>Dashboard Streamlit:</strong> Comparador de Pokémon, análisis por tipo, generador de equipos</li>
+                            <li><strong>Docker Compose:</strong> Orquestación con cachés para optimizar queries</li>
+                            <li><strong>ML Jupyter:</strong> Análisis de balanceo, predicción de tiposefectivos en combate</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 12 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">12</div>
+                        <div>
+                            <h3>Base de Datos de Los Simpsons</h3>
+                            <span class="api-tag">📺 The Simpsons API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Accede a la base de datos completa del universo de Los Simpsons con información sobre 1182+ personajes, 768+ episodios y 477+ locaciones. 
+                        Analiza patrones de datos de personajes, episodios y crea análisis de la evolución del show a través de temporadas.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://thesimpsonsapi.com/" target="_blank">https://thesimpsonsapi.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene 1182+ personajes con ocupaciones, frases y características</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para personajes, episodios, locaciones, temporadas y relaciones entre actores</li>
+                            <li><strong>Dashboard Streamlit:</strong> Catálogo de personajes interactivo, línea de tiempo de episodios, mapa de locaciones</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con búsqueda y filtros avanzados por personaje, episodio y temporada</li>
+                            <li><strong>ML Jupyter:</strong> Análisis de frases icónicas, clustering de personajes por rol, predicción de popularidad</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 13 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">13</div>
+                        <div>
+                            <h3>Análisis de Tasas de Cambio</h3>
+                            <span class="api-tag">💱 Exchange Rate API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Monitorea tasas de cambio de múltiples monedas en tiempo real. 
+                        Crea alertas automáticas y predice fluctuaciones del mercado forex.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://exchangerate-api.com/" target="_blank">https://exchangerate-api.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene tasas de 150+ monedas cada hora</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para monedas, tasas históricas y conversiones</li>
+                            <li><strong>Dashboard Streamlit:</strong> Convertidor interactivo, gráficos históricos, alertas de cambio</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con cron jobs para actualizaciones periódicas</li>
+                            <li><strong>ML Jupyter:</strong> Modelo ARIMA para predicción de tasas futuros</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 14 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">14</div>
+                        <div>
+                            <h3>Blog de Usuarios Sintéticos</h3>
+                            <span class="api-tag">📝 JSONPlaceholder API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Utiliza JSONPlaceholder para crear un ETL con posts, comentarios y datos de usuarios. 
+                        Analiza engagement y crea recomendaciones de contenido.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://jsonplaceholder.typicode.com/" target="_blank">https://jsonplaceholder.typicode.com/</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene usuarios, posts, comentarios y álbumes</li>
+                            <li><strong>BD PostgreSQL:</strong> Base de datos modelada para redes sociales/blog</li>
+                            <li><strong>Dashboard Streamlit:</strong> Análisis de engagement, posts populares, red de usuarios</li>
+                            <li><strong>Docker Compose:</strong> Orquestación con índices optimizados en BD</li>
+                            <li><strong>ML Jupyter:</strong> Sistema de recomendación de posts, detección de comunidades</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 15 -->
+                <div class="project-card">
+                    <div class="project-title">
+                        <div class="project-number">15</div>
+                        <div>
+                            <h3>Análisis de Suscriptores YouTube</h3>
+                            <span class="api-tag">▶️ YouTube Data API</span>
+                        </div>
+                    </div>
+
+                    <div class="project-content">
+                        <p class="description">
+                            Analiza canales de YouTube populares, estadísticas de videos y patrones de crecimiento. 
+                        Predice tendencias de contenido y popularidad de videos.
+                    </p>
+
+                    <div class="api-link">
+                        <strong>API:</strong> <a href="https://developers.google.com/youtube/v3" target="_blank">https://developers.google.com/youtube/v3</a>
+                    </div>
+
+                    <div class="deliverables">
+                        <h5><i class="fas fa-clipboard-list"></i> Entregables</h5>
+                        <ol>
+                            <li><strong>Extractor ETL:</strong> Script que obtiene datos de 20+ canales populares con videos</li>
+                            <li><strong>BD PostgreSQL:</strong> Tablas para canales, videos, comentarios y métricas de engagement</li>
+                            <li><strong>Dashboard Streamlit:</strong> Análisis de crecimiento, videos trending, evolución de views</li>
+                            <li><strong>Docker Compose:</strong> Contenedores con rate limiting para la API</li>
+                            <li><strong>ML Jupyter:</strong> Predicción de views, análisis de sentimiento en comentarios</li>
+                            <li><strong>Presentación PPT:</strong> Problema identificado, alcance del proyecto, pregunta de investigación, herramientas usadas, arquitectura de datos, modelos implementados, métricas de evaluación, resultados obtenidos y recomendaciones</li>
+                        </ol>
+                    </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <hr class="divider-thick">
+
+            <!-- Rúbrica Section -->
+            <section id="rubrica">
+                <h2>⭐ Rúbrica de Evaluación</h2>
+
+                <p class="lead">
+                    Cada proyecto será evaluado en base a los siguientes criterios. El proyecto debe completar todos los 5 pasos 
+                    con calidad demostrable en cada componente.
+                </p>
+
+                <div class="reflection-box" style="margin-top: 30px;">
+                    <h4>📌 Elementos Obligatorios de la Presentación PPT</h4>
+                    <p>Cada grupo debe incluir en su presentación:</p>
+                    <ol>
+                        <li><strong>Problema Identificado:</strong> Descripción clara del problema a resolver</li>
+                        <li><strong>Alcance del Proyecto:</strong> Límites y objetivos específicos</li>
+                        <li><strong>Pregunta de Investigación:</strong> Pregunta central que guía el análisis</li>
+                        <li><strong>Herramientas Utilizadas:</strong> API, librerías, tecnologías empleadas</li>
+                        <li><strong>Arquitectura de Datos:</strong> Diagrama de flujo: Extracción → Transformación → Carga</li>
+                        <li><strong>Modelos Machine Learning:</strong> Descripción de modelos implementados</li>
+                        <li><strong>Métricas de Evaluación:</strong> Métricas utilizadas y su interpretación</li>
+                        <li><strong>Resultados Obtenidos:</strong> Hallazgos principales con visualizaciones</li>
+                        <li><strong>Recomendaciones:</strong> Conclusiones y mejoras futuras</li>
+                    </ol>
+                </div>
+
+                <div class="success-box" style="margin-top: 30px;">
+                    <h4>📊 Conversión de Escala a Calificación Numérica</h4>
+                    <ul style="margin: 0; margin-left: 20px;">
+                        <li><strong>Cumple Plenamente (4.7-5.0) | 94-100%:</strong> Desempeño excepcional</li>
+                        <li><strong>Cumple en Alto Grado (4.2-4.6) | 84-93%:</strong> Desempeño muy bueno</li>
+                        <li><strong>Cumple Satisfactoriamente (3.6-4.1) | 72-83%:</strong> Desempeño bueno</li>
+                        <li><strong>Cumple Aceptablemente (3.0-3.5) | 60-71%:</strong> Desempeño aceptable</li>
+                        <li><strong>Insuficiente (0.0-2.9) | 0-59%:</strong> Desempeño deficiente</li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <hr class="divider-thick">
+
+            <!-- Recursos Section -->
+            <section id="recursos">
+                <h2>📚 Recursos y Enlaces Útiles</h2>
+
+                <div class="cards-grid">
+                    <div class="card">
+                        <h4>🐍 Python</h4>
+                        <p>Documentación oficial de Python, guías de mejores prácticas y librerías recomendadas para ciencia de datos.</p>
+                        <a href="https://www.python.org/" target="_blank">Visitar →</a>
+                    </div>
+
+                    <div class="card">
+                        <h4>🐘 PostgreSQL</h4>
+                        <p>Base de datos relacional empresarial con soporte para datos complejos y transacciones ACID garantizadas.</p>
+                        <a href="https://www.postgresql.org/" target="_blank">Visitar →</a>
+                    </div>
+
+                    <div class="card">
+                        <h4>⚡ Streamlit</h4>
+                        <p>Framework para crear aplicaciones de datos interactivas en Python sin necesidad de frontend.</p>
+                        <a href="https://streamlit.io/" target="_blank">Visitar →</a>
+                    </div>
+
+                    <div class="card">
+                        <h4>🐳 Docker</h4>
+                        <p>Plataforma de containerización para empaquetar aplicaciones con sus dependencias.</p>
+                        <a href="https://www.docker.com/" target="_blank">Visitar →</a>
+                    </div>
+
+                    <div class="card">
+                        <h4>📊 Scikit-learn</h4>
+                        <p>Librería de machine learning con algoritmos para clasificación, regresión y clustering.</p>
+                        <a href="https://scikit-learn.org/" target="_blank">Visitar →</a>
+                    </div>
+
+                    <div class="card">
+                        <h4>📈 Plotly</h4>
+                        <p>Librería para crear gráficas interactivas y dashboards visuales de alta calidad.</p>
+                        <a href="https://plotly.com/" target="_blank">Visitar →</a>
+                    </div>
+                </div>
+
+                <div class="reflection-box" style="margin-top: 40px;">
+                    <h4>⏰ Cronograma Sugerido</h4>
+                    <ul>
+                        <li><strong>Semana 1:</strong> Estudio de la API, diseño del ETL</li>
+                        <li><strong>Semana 2:</strong> Implementar Extractor y Base de Datos</li>
+                        <li><strong>Semana 3:</strong> Desarrollo del Dashboard Streamlit</li>
+                        <li><strong>Semana 4:</strong> Containerización con Docker</li>
+                        <li><strong>Semana 5:</strong> Análisis ML y optimizaciones finales</li>
+                    </ul>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="topFunction()" id="scrollTopBtn" title="Ir al inicio">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="js/scripts.js"></script>
+
+    <!-- Footer -->
+    <footer style="text-align: center; padding: 30px 20px; background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); color: white; margin-top: 60px;">
+        <p style="margin: 0; font-size: 14px;">© 2025 Ingeniería de Sistemas - Minería de Datos. Todos los derechos reservados.</p>
+        <p style="margin-top: 15px; font-size: 16px; font-weight: 500;">Creado por <strong>Ing. Julian Andres Quimbayo Castro</strong></p>
+    </footer>
+</body>
+</html>

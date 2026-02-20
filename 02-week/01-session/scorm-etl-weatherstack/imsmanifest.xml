@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns="http://www.imsglobal.org/xsd/imscp_v1p1" 
+          xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.imsglobal.org/xsd/imscp_v1p1 http://www.imsglobal.org/xsd/imscp_v1p1.xsd http://www.adlnet.org/xsd/adlcp_v1p3 http://www.adlnet.org/xsd/adlcp_v1p3.xsd"
+          identifier="etl-weatherstack-001" version="1.0">
+
+    <metadata>
+        <schema>ADL SCORM</schema>
+        <schemaversion>1.2</schemaversion>
+        <adlcp:lom>
+            <adlcp:general>
+                <adlcp:title>ETL Weatherstack - Minería de Datos</adlcp:title>
+                <adlcp:description>Curso completo sobre procesos ETL (Extract, Transform, Load) usando Weatherstack API, Python y GitHub. Proyecto práctico de extracción, transformación y carga de datos de clima.</adlcp:description>
+                <adlcp:language>es</adlcp:language>
+            </adlcp:general>
+            <adlcp:lifeCycle>
+                <adlcp:version>1.0</adlcp:version>
+                <adlcp:status>final</adlcp:status>
+            </adlcp:lifeCycle>
+            <adlcp:technical>
+                <adlcp:format>text/html</adlcp:format>
+                <adlcp:location>content/index.html</adlcp:location>
+            </adlcp:technical>
+            <adlcp:educational>
+                <adlcp:learningResourceType>course</adlcp:learningResourceType>
+                <adlcp:interactivityType>mixed</adlcp:interactivityType>
+                <adlcp:interactivityLevel>medium</adlcp:interactivityLevel>
+                <adlcp:intendedEndUserRole>learner</adlcp:intendedEndUserRole>
+                <adlcp:context>higher education</adlcp:context>
+                <adlcp:typicalAgeRange>18+</adlcp:typicalAgeRange>
+                <adlcp:description>Data Engineering | Python | APIs REST | Git/GitHub</adlcp:description>
+                <adlcp:typicalLearningTime>PT2H</adlcp:typicalLearningTime>
+            </adlcp:educational>
+            <adlcp:rights>
+                <adlcp:copyrightAndOtherRestrictions>yes</adlcp:copyrightAndOtherRestrictions>
+                <adlcp:description>© 2026 CORHUILA - Corporación Universitaria de Huila. Todos los derechos reservados.</adlcp:description>
+            </adlcp:rights>
+            <adlcp:relation>
+                <adlcp:kind>ispartof</adlcp:kind>
+                <adlcp:resource>Material Minería de Datos - Semana 2</adlcp:resource>
+            </adlcp:relation>
+            <adlcp:annotation>
+                <adlcp:person>Ing. Julian Quimbayo Castro</adlcp:person>
+                <adlcp:date>2026-02-13</adlcp:date>
+                <adlcp:description>Contenido educativo interactivo para asignatura Minería de Datos - Ingeniería de Sistemas</adlcp:description>
+            </adlcp:annotation>
+        </adlcp:lom>
+    </metadata>
+
+    <organizations default="etl-weatherstack-org">
+        <organization identifier="etl-weatherstack-org" structure="linear">
+            <title>ETL Weatherstack - Pipeline Completo de Datos</title>
+            
+            <item identifier="item-01" identifierref="resource-01" isvisible="true">
+                <title>Introducción al Proceso ETL</title>
+                <adlcp:completionThreshold completionSetByContent="false" minProgressMeasure="0.5" progressWeight="20"/>
+            </item>
+
+            <item identifier="item-02" identifierref="resource-01" isvisible="true">
+                <title>Fase 1: WSL Ubuntu 24</title>
+                <adlcp:completionThreshold completionSetByContent="false" minProgressMeasure="0.5" progressWeight="15"/>
+            </item>
+
+            <item identifier="item-03" identifierref="resource-01" isvisible="true">
+                <title>Fase 2: Generación API Key Weatherstack</title>
+                <adlcp:completionThreshold completionSetByContent="false" minProgressMeasure="0.5" progressWeight="15"/>
+            </item>
+
+            <item identifier="item-04" identifierref="resource-01" isvisible="true">
+                <title>Fase 3: Proyecto Python - ETL</title>
+                <adlcp:completionThreshold completionSetByContent="false" minProgressMeasure="0.5" progressWeight="20"/>
+            </item>
+
+            <item identifier="item-05" identifierref="resource-01" isvisible="true">
+                <title>Fase 4: Cargue en GitHub</title>
+                <adlcp:completionThreshold completionSetByContent="false" minProgressMeasure="0.5" progressWeight="15"/>
+            </item>
+
+            <item identifier="item-06" identifierref="resource-01" isvisible="true">
+                <title>Diagrama del Proceso ETL</title>
+                <adlcp:completionThreshold completionSetByContent="false" minProgressMeasure="0.5" progressWeight="10"/>
+            </item>
+
+            <item identifier="item-07" identifierref="resource-01" isvisible="true">
+                <title>Preguntas de Reflexión - Socialización en Grupo</title>
+                <adlcp:completionThreshold completionSetByContent="false" minProgressMeasure="0.5" progressWeight="5"/>
+            </item>
+        </organization>
+    </organizations>
+
+    <resources>
+        <resource identifier="resource-01" type="webcontent" adlcp:scormtype="sco" href="content/index.html">
+            <file href="content/index.html"/>
+            <file href="content/scorm.js"/>
+        </resource>
+    </resources>
+
+</manifest>

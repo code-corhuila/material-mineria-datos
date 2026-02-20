@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ADL Packager Metadata -->
+<adlcp:lom xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.adlnet.org/xsd/adlcp_v1p3 http://www.adlnet.org/xsd/adlcp_v1p3.xsd">
+  
+  <adlcp:general>
+    <adlcp:title>ETL Weatherstack - Pipeline de Datos Completo</adlcp:title>
+    <adlcp:description>Curso interactivo sobre procesos ETL: Extracción, Transformación y Cargue de datos usando Weatherstack API, Python y GitHub. Incluye 4 fases prácticas y preguntas de reflexión para socialización.</adlcp:description>
+    <adlcp:language>es</adlcp:language>
+    <adlcp:keyword>ETL, Data Engineering, Python, API, GitHub, Weatherstack</adlcp:keyword>
+  </adlcp:general>
+
+  <adlcp:technical>
+    <adlcp:format>text/html</adlcp:format>
+    <adlcp:size>2500000</adlcp:size>
+    <adlcp:location>content/index.html</adlcp:location>
+    <adlcp:requirement>
+      <adlcp:orComposite>
+        <adlcp:type>browser</adlcp:type>
+        <adlcp:name>Chrome</adlcp:name>
+        <adlcp:minimumVersion>70</adlcp:minimumVersion>
+      </adlcp:orComposite>
+    </adlcp:requirement>
+    <adlcp:requirement>
+      <adlcp:orComposite>
+        <adlcp:type>browser</adlcp:type>
+        <adlcp:name>Firefox</adlcp:name>
+        <adlcp:minimumVersion>65</adlcp:minimumVersion>
+      </adlcp:orComposite>
+    </adlcp:requirement>
+  </adlcp:technical>
+
+  <adlcp:educational>
+    <adlcp:description>Curso de educación superior dirigido a estudiantes de Ingeniería de Sistemas</adlcp:description>
+    <adlcp:learningResourceType>course</adlcp:learningResourceType>
+    <adlcp:learningResourceType>tutorial</adlcp:learningResourceType>
+    <adlcp:interactivityLevel>medium</adlcp:interactivityLevel>
+    <adlcp:interactivityType>active</adlcp:interactivityType>
+    <adlcp:intendedEndUserRole>learner</adlcp:intendedEndUserRole>
+    <adlcp:intendedEndUserRole>teacher</adlcp:intendedEndUserRole>
+    <adlcp:typicalAgeRange>18+</adlcp:typicalAgeRange>
+    <adlcp:typicalLearningTime>PT120M</adlcp:typicalLearningTime>
+    <adlcp:description>Incluye práctica de manos con código Python</adlcp:description>
+  </adlcp:educational>
+
+  <adlcp:rights>
+    <adlcp:copyrightAndOtherRestrictions>yes</adlcp:copyrightAndOtherRestrictions>
+    <adlcp:description>© 2026 CORHUILA. Todos los derechos reservados. Uso permitido con fines académicos.</adlcp:description>
+  </adlcp:rights>
+
+  <adlcp:relation>
+    <adlcp:kind>ispartof</adlcp:kind>
+    <adlcp:resource>Minería de Datos - Semana 2 - Sesión 1</adlcp:resource>
+  </adlcp:relation>
+
+  <adlcp:annotation>
+    <adlcp:person>Ing. Julian Quimbayo Castro</adlcp:person>
+    <adlcp:date>2026-02-13</adlcp:date>
+    <adlcp:description>Paquete SCORM completamente funcional para Moodle, Canvas, Blackboard y otros LMS compatibles.</adlcp:description>
+  </adlcp:annotation>
+
+</adlcp:lom>

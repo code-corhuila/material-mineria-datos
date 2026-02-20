@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest identifier="proyectos-etl-ml-scorm" version="1.0"
+    xmlns="http://www.imsproject.org/xsd/imscp_v1p1"
+    xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_v1p3"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_v1p1 imscp_v1p1.xsd
+    http://www.adlnet.org/xsd/adlcp_v1p3 adlcp_v1p3.xsd">
+
+    <metadata>
+        <schema>ADL SCORM</schema>
+        <schemaversion>1.2</schemaversion>
+    </metadata>
+
+    <organizations default="org1">
+        <organization identifier="org1">
+            <title>15 Proyectos ETL, Dashboard y Machine Learning</title>
+            <description>Curso completo sobre pipelines ETL, visualización de datos y machine learning usando APIs públicas, PostgreSQL, Streamlit y Docker</description>
+            
+            <item identifier="item0" identifierref="resource0">
+                <title>📚 Introducción y Rúbrica</title>
+                <description>Introducción al curso y criterios de evaluación</description>
+            </item>
+
+            <item identifier="item1" identifierref="resource1">
+                <title>🚀 Proyecto 1: Análisis Climático Global</title>
+                <description>Construye un sistema ETL para monitorear datos climáticos en tiempo real</description>
+            </item>
+
+            <item identifier="item2" identifierref="resource2">
+                <title>💰 Proyecto 2: Análisis de Criptomonedas</title>
+                <description>ETL con datos históricos y en tiempo real de criptomonedas</description>
+            </item>
+
+            <item identifier="item3" identifierref="resource3">
+                <title>🚀 Proyecto 3: Exploración de Datos Espaciales</title>
+                <description>Análisis de datos públicos de SpaceX</description>
+            </item>
+
+            <item identifier="item4" identifierref="resource4">
+                <title>🌌 Proyecto 4: Datos Astronómicos de NASA</title>
+                <description>Múltiples APIs de NASA para datos astronómicos</description>
+            </item>
+
+            <item identifier="item5" identifierref="resource5">
+                <title>🦸 Proyecto 5: Base de Datos de Superhéroes</title>
+                <description>Base de datos completa de superhéroes con poderes y afiliaciones</description>
+            </item>
+
+            <item identifier="item6" identifierref="resource6">
+                <title>🎬 Proyecto 6: Base de Datos de Películas</title>
+                <description>ETL de películas con información de calificaciones y actores</description>
+            </item>
+
+            <item identifier="item7" identifierref="resource7">
+                <title>🎮 Proyecto 7: Catálogo de Videojuegos</title>
+                <description>Base de datos de videojuegos con análisis de tendencias</description>
+            </item>
+
+            <item identifier="item8" identifierref="resource8">
+                <title>🌍 Proyecto 8: Indicadores Económicos de Colombia</title>
+                <description>Análisis de indicadores económicos y demográficos de Colombia</description>
+            </item>
+
+            <item identifier="item9" identifierref="resource9">
+                <title>🌐 Proyecto 9: Atlas de Países y Territorios</title>
+                <description>Información completa de países del mundo</description>
+            </item>
+
+            <item identifier="item10" identifierref="resource10">
+                <title>🎌 Proyecto 10: Catálogo de Anime y Manga</title>
+                <description>Base de datos de anime y manga con análisis de géneros</description>
+            </item>
+
+            <item identifier="item11" identifierref="resource11">
+                <title>⚡ Proyecto 11: Base de Datos Pokémon</title>
+                <description>Base de datos completa de Pokémon con estadísticas</description>
+            </item>
+
+            <item identifier="item12" identifierref="resource12">
+                <title>📺 Proyecto 12: Base de Datos de Los Simpsons</title>
+                <description>Base de datos completa del universo de Los Simpsons</description>
+            </item>
+
+            <item identifier="item13" identifierref="resource13">
+                <title>💱 Proyecto 13: Análisis de Tasas de Cambio</title>
+                <description>Monitoreo de tasas de cambio en tiempo real</description>
+            </item>
+
+            <item identifier="item14" identifierref="resource14">
+                <title>📝 Proyecto 14: Blog de Usuarios Sintéticos</title>
+                <description>ETL de posts y comentarios con análisis de engagement</description>
+            </item>
+
+            <item identifier="item15" identifierref="resource15">
+                <title>▶️ Proyecto 15: Análisis de Suscriptores YouTube</title>
+                <description>Análisis de canales YouTube con predicción de tendencias</description>
+            </item>
+
+            <item identifier="item16" identifierref="resource16">
+                <title>👽 Proyecto 16: Análisis del Universo Rick and Morty</title>
+                <description>Base de datos del multiverso Rick and Morty con análisis de personajes</description>
+            </item>
+        </organization>
+    </organizations>
+
+    <resources>
+        <resource identifier="resource0" type="webcontent" href="intro.html">
+            <file href="intro.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource1" type="webcontent" href="proyecto-01.html">
+            <file href="proyecto-01.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource2" type="webcontent" href="proyecto-02.html">
+            <file href="proyecto-02.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource3" type="webcontent" href="proyecto-03.html">
+            <file href="proyecto-03.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource4" type="webcontent" href="proyecto-04.html">
+            <file href="proyecto-04.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource5" type="webcontent" href="proyecto-05.html">
+            <file href="proyecto-05.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource6" type="webcontent" href="proyecto-06.html">
+            <file href="proyecto-06.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource7" type="webcontent" href="proyecto-07.html">
+            <file href="proyecto-07.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource8" type="webcontent" href="proyecto-08.html">
+            <file href="proyecto-08.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource9" type="webcontent" href="proyecto-09.html">
+            <file href="proyecto-09.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource10" type="webcontent" href="proyecto-10.html">
+            <file href="proyecto-10.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource11" type="webcontent" href="proyecto-11.html">
+            <file href="proyecto-11.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource12" type="webcontent" href="proyecto-12.html">
+            <file href="proyecto-12.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource13" type="webcontent" href="proyecto-13.html">
+            <file href="proyecto-13.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource14" type="webcontent" href="proyecto-14.html">
+            <file href="proyecto-14.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource15" type="webcontent" href="proyecto-15.html">
+            <file href="proyecto-15.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+
+        <resource identifier="resource16" type="webcontent" href="proyecto-16.html">
+            <file href="proyecto-16.html"/>
+            <file href="css/styles.css"/>
+            <file href="js/scripts.js"/>
+            <file href="assets/logo-corhuila.png"/>
+        </resource>
+    </resources>
+
+</manifest>
